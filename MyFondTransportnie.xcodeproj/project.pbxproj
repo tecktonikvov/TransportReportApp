@@ -3,29 +3,69 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040E53C3258F6EC80046B64E /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E53C2258F6EC80046B64E /* UserSettings.swift */; };
+		041DC5A4258687C300F60F21 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041DC5A3258687C300F60F21 /* APIManager.swift */; };
+		0431A84F2596705900528953 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A84E2596705900528953 /* ModelController.swift */; };
+		0431A852259688A100528953 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A851259688A100528953 /* DescriptionViewController.swift */; };
 		0464E96825800E2500802005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96725800E2500802005 /* AppDelegate.swift */; };
 		0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96925800E2500802005 /* SceneDelegate.swift */; };
-		0464E96C25800E2500802005 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96B25800E2500802005 /* ViewController.swift */; };
+		0464E96C25800E2500802005 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96B25800E2500802005 /* MainViewController.swift */; };
 		0464E96F25800E2500802005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E96D25800E2500802005 /* Main.storyboard */; };
 		0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */; };
 		0464E97425800E2900802005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97325800E2900802005 /* Assets.xcassets */; };
 		0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97525800E2900802005 /* LaunchScreen.storyboard */; };
+		046C2A352596617500F9048D /* crack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 046C2A342596617500F9048D /* crack.gif */; };
+		046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */; };
+		0488BC7F258F8EAD00D4D9FF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC7E258F8EAD00D4D9FF /* UserModel.swift */; };
+		04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC771259145EF008A7311 /* CoreDataManager.swift */; };
+		04E2A87A25990A1400FE2784 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87925990A1400FE2784 /* CoreDataStack.swift */; };
+		04E2A880259DF8B300FE2784 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87F259DF8B200FE2784 /* Trip+CoreDataProperties.swift */; };
+		04E2A881259DF8B300FE2784 /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87E259DF8B200FE2784 /* Trip+CoreDataClass.swift */; };
+		04E775FD2597D3C800A1EAF6 /* DescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E775FC2597D3C800A1EAF6 /* DescVC.swift */; };
+		04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E775FF2597D5DB00A1EAF6 /* addITCell.swift */; };
+		04E776032598E37100A1EAF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E776022598E37100A1EAF6 /* User.swift */; };
+		04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */; };
+		04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */; };
+		04F174862582B85F0064575F /* TtripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F174852582B85F0064575F /* TtripModel.swift */; };
+		04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1748A2582B9920064575F /* TripTableViewCell.swift */; };
+		B068A8AB762FEB7CD38EC0E4 /* Pods_MyFondTransportnie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040E53C2258F6EC80046B64E /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		041DC5A3258687C300F60F21 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0431A84E2596705900528953 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		0431A851259688A100528953 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		0464E96425800E2500802005 /* MyFondTransportnie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFondTransportnie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E96725800E2500802005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E96925800E2500802005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0464E96B25800E2500802005 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0464E96B25800E2500802005 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0464E96E25800E2500802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0464E97125800E2500802005 /* MyFondTransportnie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFondTransportnie.xcdatamodel; sourceTree = "<group>"; };
 		0464E97325800E2900802005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0464E97625800E2900802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0464E97825800E2900802005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		046C2A342596617500F9048D /* crack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = crack.gif; path = ../../../crack.gif; sourceTree = "<group>"; };
+		046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GusAndAlertsFourViewController.swift; sourceTree = "<group>"; };
+		0488BC7E258F8EAD00D4D9FF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		04DBC771259145EF008A7311 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		04E2A87925990A1400FE2784 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		04E2A87E259DF8B200FE2784 /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04E2A87F259DF8B200FE2784 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		04E775FC2597D3C800A1EAF6 /* DescVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescVC.swift; sourceTree = "<group>"; };
+		04E775FF2597D5DB00A1EAF6 /* addITCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addITCell.swift; sourceTree = "<group>"; };
+		04E776022598E37100A1EAF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04F174852582B85F0064575F /* TtripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TtripModel.swift; sourceTree = "<group>"; };
+		04F1748A2582B9920064575F /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		1ED05A10DAD9F53EE9D933C5 /* Pods-MyFondTransportnie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.debug.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.debug.xcconfig"; sourceTree = "<group>"; };
+		ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFondTransportnie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCBE43757909D2FB56005446 /* Pods-MyFondTransportnie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.release.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +73,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B068A8AB762FEB7CD38EC0E4 /* Pods_MyFondTransportnie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040E53C5258F6ED50046B64E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04E2A87E259DF8B200FE2784 /* Trip+CoreDataClass.swift */,
+				04E2A87F259DF8B200FE2784 /* Trip+CoreDataProperties.swift */,
+				04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */,
+				04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */,
+				04F174852582B85F0064575F /* TtripModel.swift */,
+				0488BC7E258F8EAD00D4D9FF /* UserModel.swift */,
+				04E776022598E37100A1EAF6 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0464E95B25800E2500802005 = {
 			isa = PBXGroup;
 			children = (
 				0464E96625800E2500802005 /* MyFondTransportnie */,
 				0464E96525800E2500802005 /* Products */,
+				28852FD5FC2AFF8E309E8027 /* Pods */,
+				D4A24EB9F342EE619AF2CCB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +115,61 @@
 		0464E96625800E2500802005 /* MyFondTransportnie */ = {
 			isa = PBXGroup;
 			children = (
-				0464E96725800E2500802005 /* AppDelegate.swift */,
-				0464E96925800E2500802005 /* SceneDelegate.swift */,
-				0464E96B25800E2500802005 /* ViewController.swift */,
-				0464E96D25800E2500802005 /* Main.storyboard */,
+				04F174902582C6680064575F /* Cells */,
+				040E53C5258F6ED50046B64E /* Models */,
+				04E776062598F1D600A1EAF6 /* Networking */,
+				0464E96B25800E2500802005 /* MainViewController.swift */,
+				0431A851259688A100528953 /* DescriptionViewController.swift */,
+				04E2A87925990A1400FE2784 /* CoreDataStack.swift */,
+				046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */,
+				040E53C2258F6EC80046B64E /* UserSettings.swift */,
 				0464E97325800E2900802005 /* Assets.xcassets */,
+				0464E96D25800E2500802005 /* Main.storyboard */,
 				0464E97525800E2900802005 /* LaunchScreen.storyboard */,
+				046C2A342596617500F9048D /* crack.gif */,
 				0464E97825800E2900802005 /* Info.plist */,
 				0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */,
+				0464E96725800E2500802005 /* AppDelegate.swift */,
+				0464E96925800E2500802005 /* SceneDelegate.swift */,
+				04E775FC2597D3C800A1EAF6 /* DescVC.swift */,
 			);
 			path = MyFondTransportnie;
+			sourceTree = "<group>";
+		};
+		04E776062598F1D600A1EAF6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				04DBC771259145EF008A7311 /* CoreDataManager.swift */,
+				0431A84E2596705900528953 /* ModelController.swift */,
+				041DC5A3258687C300F60F21 /* APIManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		04F174902582C6680064575F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				04F1748A2582B9920064575F /* TripTableViewCell.swift */,
+				04E775FF2597D5DB00A1EAF6 /* addITCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		28852FD5FC2AFF8E309E8027 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1ED05A10DAD9F53EE9D933C5 /* Pods-MyFondTransportnie.debug.xcconfig */,
+				DCBE43757909D2FB56005446 /* Pods-MyFondTransportnie.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4A24EB9F342EE619AF2CCB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0464E97B25800E2900802005 /* Build configuration list for PBXNativeTarget "MyFondTransportnie" */;
 			buildPhases = (
+				7DD784A2BC59BEBFD2908EEF /* [CP] Check Pods Manifest.lock */,
 				0464E96025800E2500802005 /* Sources */,
 				0464E96125800E2500802005 /* Frameworks */,
 				0464E96225800E2500802005 /* Resources */,
+				DF9F9C2B894CFD43124846CF /* [CP] Embed Pods Frameworks */,
+				BDCEE931FAF87B0E5B6AC772 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046C2A352596617500F9048D /* crack.gif in Resources */,
 				0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */,
 				0464E97425800E2900802005 /* Assets.xcassets in Resources */,
 				0464E96F25800E2500802005 /* Main.storyboard in Resources */,
@@ -135,15 +241,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7DD784A2BC59BEBFD2908EEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyFondTransportnie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDCEE931FAF87B0E5B6AC772 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF9F9C2B894CFD43124846CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0464E96025800E2500802005 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0464E96C25800E2500802005 /* ViewController.swift in Sources */,
+				04E2A881259DF8B300FE2784 /* Trip+CoreDataClass.swift in Sources */,
+				04E2A880259DF8B300FE2784 /* Trip+CoreDataProperties.swift in Sources */,
+				04F174862582B85F0064575F /* TtripModel.swift in Sources */,
+				0431A852259688A100528953 /* DescriptionViewController.swift in Sources */,
+				04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */,
+				0431A84F2596705900528953 /* ModelController.swift in Sources */,
+				041DC5A4258687C300F60F21 /* APIManager.swift in Sources */,
+				0464E96C25800E2500802005 /* MainViewController.swift in Sources */,
+				04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */,
+				04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */,
+				04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */,
+				04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */,
 				0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */,
 				0464E96825800E2500802005 /* AppDelegate.swift in Sources */,
+				046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */,
 				0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */,
+				04E2A87A25990A1400FE2784 /* CoreDataStack.swift in Sources */,
+				04E776032598E37100A1EAF6 /* User.swift in Sources */,
+				040E53C3258F6EC80046B64E /* UserSettings.swift in Sources */,
+				0488BC7F258F8EAD00D4D9FF /* UserModel.swift in Sources */,
+				04E775FD2597D3C800A1EAF6 /* DescVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,12 +469,14 @@
 		};
 		0464E97C25800E2900802005 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1ED05A10DAD9F53EE9D933C5 /* Pods-MyFondTransportnie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8G2FD9CAB9;
 				INFOPLIST_FILE = MyFondTransportnie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,12 +490,14 @@
 		};
 		0464E97D25800E2900802005 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCBE43757909D2FB56005446 /* Pods-MyFondTransportnie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8G2FD9CAB9;
 				INFOPLIST_FILE = MyFondTransportnie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

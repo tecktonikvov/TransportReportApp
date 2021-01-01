@@ -1,4 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Chache" representedClassName="Chache" syncable="YES" codeGenerationType="class">
+        <attribute name="objInJSON" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="direct_img" optional="YES" attributeType="String"/>
+        <attribute name="fuel" optional="YES" attributeType="String"/>
+        <attribute name="fuel_capacity" optional="YES" attributeType="String"/>
+        <attribute name="gas" optional="YES" attributeType="String"/>
+        <attribute name="gas_capacity" optional="YES" attributeType="String"/>
+        <attribute name="gas_cost" optional="YES" attributeType="String"/>
+        <attribute name="gasoline" optional="YES" attributeType="String"/>
+        <attribute name="gasoline_capacity" optional="YES" attributeType="String"/>
+        <attribute name="gasoline_cost" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="odometer_end" optional="YES" attributeType="String"/>
+        <attribute name="odometer_end_img" optional="YES" attributeType="String"/>
+        <attribute name="odometer_end_img_url" optional="YES" attributeType="String"/>
+        <attribute name="odometer_start" optional="YES" attributeType="String"/>
+        <attribute name="odometer_start_img" optional="YES" attributeType="String"/>
+        <attribute name="odometer_start_img_url" optional="YES" attributeType="String"/>
+        <attribute name="persons" optional="YES" attributeType="String"/>
+        <attribute name="points" optional="YES" attributeType="String"/>
+        <attribute name="refull" optional="YES" attributeType="String"/>
+        <attribute name="routs" optional="YES" attributeType="String"/>
+        <attribute name="start_point" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="trip_name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="abbrev" optional="YES" attributeType="String"/>
+        <attribute name="active" optional="YES" attributeType="String"/>
+        <attribute name="name_en" optional="YES" attributeType="String"/>
+        <attribute name="name_ru" optional="YES" attributeType="String"/>
+        <attribute name="surname_en" optional="YES" attributeType="String"/>
+        <attribute name="surname_ru" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Usert" representedClassName="Usert" syncable="YES" codeGenerationType="class">
+        <attribute name="isAuthorize" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+        <attribute name="userPass" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Chache" positionX="-54" positionY="144" width="128" height="58"/>
+        <element name="User" positionX="-54" positionY="72" width="128" height="148"/>
+        <element name="Usert" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Trip" positionX="-54" positionY="81" width="128" height="418"/>
+    </elements>
 </model>
