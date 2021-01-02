@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
+    static var vc: ViewController!
     static let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
     
     private func createUserEntityFrom(dictionary: [String:AnyObject]) -> NSManagedObject? {
@@ -25,7 +26,7 @@ class CoreDataManager {
         return nil
     }
     
-    private func createTripEntityFrom(dictionary: [String:AnyObject]) -> NSManagedObject? { // нужно выставить типы данных в сущности
+    private func createTripEntityFrom(dictionary: [String:AnyObject]) -> NSManagedObject? {
         if let userEntity = NSEntityDescription.insertNewObject(forEntityName: "Trip", into: CoreDataManager.context) as? Trip {
             userEntity.id = dictionary["id"] as? String
             userEntity.trip_name = dictionary["trip_name"] as? String
@@ -64,13 +65,13 @@ class CoreDataManager {
         // как userEntity и добавляется в контекст
             do {
                 try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
-                ("Save tpip success")
+                print("Save trip success")
             } catch let error {
                 print(error)
             }
         }
     
-    func saveInCoreDataWith(array: [[String: AnyObject]]) {
+    func saveInCoreDataUserWith(array: [[String: AnyObject]]) {
             _ = array.map{self.createUserEntityFrom(dictionary: $0)} 
             do {
                 try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
@@ -94,32 +95,37 @@ class CoreDataManager {
             }
         }
     
-//    class func saveEntity(entity: [AnyObject]) -> NSManagedObject? {
-//        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-//        fetchRequest.predicate = NSPredicate(format: "active != nil")
-//
-//        var records = 0
-//
-//        do {
-//            let count = try context.count(for: fetchRequest)
-//            records = count
-//            print("just get a count")
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//
-//        var entityToSave = NSEntityDescription.entity(forEntityName: "User", in: context) as? User {
-//
-//        }
-//        if let photoEntity = NSEntityDescription.insertNewObject(forEntityName: "Photo", into: context) as? Photo {
-//                    photoEntity.author = dictionary["author"] as? String
-//                    photoEntity.tags = dictionary["tags"] as? String
-//                    let mediaDictionary = dictionary["media"] as? [String: AnyObject]
-//                    photoEntity.mediaURL = mediaDictionary?["m"] as? String
-//                    return photoEntity
-//                }
-//                return nil
-//
-//    }
+    func getTrips(){
+        let fetchRequest: NSFetchRequest<Trip> = Trip.fetchRequest()
+        
+        do {
+            let result = try CoreDataManager.context.fetch(fetchRequest)
+            if result.isEmpty {
+                print("Cant fetch Trips in function: \(#function) file: \(#file)")
+            }
+            CoreDataManager.vc.trips = result
+            
+        } catch let error as NSError {
+            print(error.userInfo)
+        }
+    }
+    
+    func getUsers()-> [User]{
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        
+        do {
+            let result = try CoreDataManager.context.fetch(fetchRequest)
+            if result.isEmpty {
+                print("Cant fetch Users in function: \(#function) file: \(#file)")
+            }
+            print("Users from coreData fetched in count: \(result.count)")
+            return result
+            
+        } catch let error as NSError {
+            print(error.userInfo)
+        }
+        return [User()]
+    }
+    
     
 }

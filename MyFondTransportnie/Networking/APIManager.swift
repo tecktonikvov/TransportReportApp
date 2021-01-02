@@ -47,6 +47,7 @@ class APIManager: NSObject{
         AF.request("http://192.168.1.6/managment/api?token=\(token)&action=getTrips&user=\(login)&pass=Koz")
             .validate()
             .responseJSON { response in
+
                 switch (response.result) {
                 case .success( _):
                     completion(.Success(response.value as! [[String:AnyObject]]))

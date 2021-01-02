@@ -83,7 +83,7 @@ extension ViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             } else {
-                DataManager.auth(controller: self, login: login!, pass: pass!)
+                ModelController.authFromAPI(login: login!, pass: pass!)
             }
         }))
         self.present(alertController, animated: true, completion: nil)
@@ -98,22 +98,23 @@ extension ViewController {
     }
     
     func prepareAbbrevString(trip: Trip)->String {
-        var personsStr = String()
+        //var personsStr = String()
         var i = 0
         if let tripPersons = trip.persons {
             for person in tripPersons {
 
                 if i != 0 {
-                    //personsStr += ", " + person.abbrev
+//                    personsStr += ", " + person.abbrev
                 } else {
                     //personsStr += person.abbrev
                 }
                 i += 1
             }
             
-            return personsStr
+            return "Koz, BW"
         } else {
-            return String()
+            return "Koz, BW"
+            //return String()
         }
     }
     

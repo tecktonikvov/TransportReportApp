@@ -10,7 +10,6 @@
 		040E53C3258F6EC80046B64E /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E53C2258F6EC80046B64E /* UserSettings.swift */; };
 		041DC5A4258687C300F60F21 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041DC5A3258687C300F60F21 /* APIManager.swift */; };
 		0431A84F2596705900528953 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A84E2596705900528953 /* ModelController.swift */; };
-		0431A852259688A100528953 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A851259688A100528953 /* DescriptionViewController.swift */; };
 		0464E96825800E2500802005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96725800E2500802005 /* AppDelegate.swift */; };
 		0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96925800E2500802005 /* SceneDelegate.swift */; };
 		0464E96C25800E2500802005 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96B25800E2500802005 /* MainViewController.swift */; };
@@ -30,6 +29,7 @@
 		04E776032598E37100A1EAF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E776022598E37100A1EAF6 /* User.swift */; };
 		04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */; };
 		04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */; };
+		04EFE21125A095E10010AFFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFE21025A095E10010AFFC /* ViewController.swift */; };
 		04F174862582B85F0064575F /* TtripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F174852582B85F0064575F /* TtripModel.swift */; };
 		04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1748A2582B9920064575F /* TripTableViewCell.swift */; };
 		B068A8AB762FEB7CD38EC0E4 /* Pods_MyFondTransportnie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */; };
@@ -39,7 +39,6 @@
 		040E53C2258F6EC80046B64E /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		041DC5A3258687C300F60F21 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0431A84E2596705900528953 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		0431A851259688A100528953 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		0464E96425800E2500802005 /* MyFondTransportnie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFondTransportnie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E96725800E2500802005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E96925800E2500802005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +60,7 @@
 		04E776022598E37100A1EAF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04EFE21025A095E10010AFFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04F174852582B85F0064575F /* TtripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TtripModel.swift; sourceTree = "<group>"; };
 		04F1748A2582B9920064575F /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		1ED05A10DAD9F53EE9D933C5 /* Pods-MyFondTransportnie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.debug.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,10 +119,9 @@
 				040E53C5258F6ED50046B64E /* Models */,
 				04E776062598F1D600A1EAF6 /* Networking */,
 				0464E96B25800E2500802005 /* MainViewController.swift */,
-				0431A851259688A100528953 /* DescriptionViewController.swift */,
-				04E2A87925990A1400FE2784 /* CoreDataStack.swift */,
+				04EFE21025A095E10010AFFC /* ViewController.swift */,
+				04E775FC2597D3C800A1EAF6 /* DescVC.swift */,
 				046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */,
-				040E53C2258F6EC80046B64E /* UserSettings.swift */,
 				0464E97325800E2900802005 /* Assets.xcassets */,
 				0464E96D25800E2500802005 /* Main.storyboard */,
 				0464E97525800E2900802005 /* LaunchScreen.storyboard */,
@@ -131,7 +130,6 @@
 				0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */,
 				0464E96725800E2500802005 /* AppDelegate.swift */,
 				0464E96925800E2500802005 /* SceneDelegate.swift */,
-				04E775FC2597D3C800A1EAF6 /* DescVC.swift */,
 			);
 			path = MyFondTransportnie;
 			sourceTree = "<group>";
@@ -140,8 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				04DBC771259145EF008A7311 /* CoreDataManager.swift */,
+				040E53C2258F6EC80046B64E /* UserSettings.swift */,
 				0431A84E2596705900528953 /* ModelController.swift */,
 				041DC5A3258687C300F60F21 /* APIManager.swift */,
+				04E2A87925990A1400FE2784 /* CoreDataStack.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 				04E2A881259DF8B300FE2784 /* Trip+CoreDataClass.swift in Sources */,
 				04E2A880259DF8B300FE2784 /* Trip+CoreDataProperties.swift in Sources */,
 				04F174862582B85F0064575F /* TtripModel.swift in Sources */,
-				0431A852259688A100528953 /* DescriptionViewController.swift in Sources */,
+				04EFE21125A095E10010AFFC /* ViewController.swift in Sources */,
 				04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */,
 				0431A84F2596705900528953 /* ModelController.swift in Sources */,
 				041DC5A4258687C300F60F21 /* APIManager.swift in Sources */,
