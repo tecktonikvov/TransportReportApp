@@ -83,7 +83,7 @@ extension ViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             } else {
-                ModelController.authFromAPI(login: login!, pass: pass!)
+                ModelController.authFromAPI( login: login!, pass: pass!)
             }
         }))
         self.present(alertController, animated: true, completion: nil)

@@ -8,12 +8,10 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController {
+class ViewController: UIViewController {
     
-    static var sharedInstance: MainViewController = {
-        let instance = MainViewController()
-        return instance
-    }()
+    let CDM = CoreDataManager()
+    static let shared = ViewController()
     
     enum VCState {
         case nonAuthorise
@@ -25,16 +23,18 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var logoutButn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-        
+    
     var users = [User]() {
         didSet{
-            print(users)
+            //print(users)
         }
     }
+    
     var trips = [Trip]() {
         didSet {
-            trips.sort(by: { Int($0.odometerStart!)! > Int($1.odometerStart!)! })
+            trips.sort(by: { Int($0.odometer_start!)! > Int($1.odometer_start!)! })
             tableView.reloadData()
+            print("Variable trips in \(#file) was update, current count: \(trips.count)")
         }
     }
     
@@ -46,13 +46,13 @@ class MainViewController: UIViewController {
             self.setState(state: v)
         }
     }
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        CoreDataManager.vc = self
+        ModelController.vc = self
         setState(state: .nonAuthorise)
-        CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию КорДаты
+        CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
     }
     
     @IBAction func logoutAction(_ sender: Any) {
@@ -70,13 +70,13 @@ class MainViewController: UIViewController {
             } else {
                 setState(state: .fetchengData)
             }
-            self.logoutButn.isEnabled = false
+            logoutButn.isEnabled = false
             
         case .fetchengData:
             gus(setState: .show)
-            ModelController.getTrips(VC: self)
-            ModelController.getUsers(VC: self)
-            
+            ModelController.getTripsFromAPI()
+            ModelController.getUsersFromAPI()
+
         case .normal:
             gus(setState: .hide)
             self.logoutButn.isEnabled = true
@@ -89,18 +89,13 @@ class MainViewController: UIViewController {
             
         }
     }
-    
-    //func transitionToJSON(trip)// смотрим выделеное видео, пытаемся сохранить обькт Трип в корДата
-
-    
-    
 }
 
-extension  MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension  ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell") as! TripTableViewCell
         let trip = trips[indexPath.row]
@@ -109,14 +104,14 @@ extension  MainViewController: UITableViewDelegate, UITableViewDataSource {
         let indexUp = indexPath.row + 1
         
         cell.nameLabel.text = prepareAbbrevString(trip: trip)
-        cell.startRangeLabel.text = trip.odometerStart
-        cell.endRangeLabel.text = trip.odometerEnd
-        
+        cell.startRangeLabel.text = trip.odometer_start
+        cell.endRangeLabel.text = trip.odometer_end
+
         if indexPath.row != trips.count - 1{
-            if cell.startRangeLabel.text != trips[indexUp].odometerEnd {
+            if cell.startRangeLabel.text != trips[indexUp].odometer_end {
                 cell.backgroundColor = #colorLiteral(red: 1, green: 0.8984109074, blue: 0.8925564463, alpha: 1)
             } else {
-                cell.backgroundColor = #colorLiteral(red: 0.973625228, green: 0.9854542545, blue: 1, alpha: 1)
+                cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
         }
         
@@ -130,10 +125,11 @@ extension  MainViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.lpgLabel.text = "LPG"
             }
         }
-        
+
         return cell
     }
 }
+
 
 
 

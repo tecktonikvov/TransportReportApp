@@ -43,8 +43,6 @@ class DescVC: UIViewController {
         heightTableViewIt.constant = 44
         heightTableViewTrans.constant = 44
         heightTableViewSomeOne.constant = 44
-
-
     }
     
     @IBAction func addSomeOneAction(_ sender: Any) {

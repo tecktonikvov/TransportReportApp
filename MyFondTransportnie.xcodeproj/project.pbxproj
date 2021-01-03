@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		040E53C3258F6EC80046B64E /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E53C2258F6EC80046B64E /* UserSettings.swift */; };
+		04161D1A25A10D4800299B89 /* OdomoeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04161D1925A10D4700299B89 /* OdomoeterViewController.swift */; };
+		04161D2625A11F1600299B89 /* crack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04161D2525A11F1600299B89 /* crack.gif */; };
 		041DC5A4258687C300F60F21 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041DC5A3258687C300F60F21 /* APIManager.swift */; };
 		0431A84F2596705900528953 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A84E2596705900528953 /* ModelController.swift */; };
 		0464E96825800E2500802005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96725800E2500802005 /* AppDelegate.swift */; };
 		0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96925800E2500802005 /* SceneDelegate.swift */; };
-		0464E96C25800E2500802005 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96B25800E2500802005 /* MainViewController.swift */; };
 		0464E96F25800E2500802005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E96D25800E2500802005 /* Main.storyboard */; };
 		0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */; };
 		0464E97425800E2900802005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97325800E2900802005 /* Assets.xcassets */; };
 		0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97525800E2900802005 /* LaunchScreen.storyboard */; };
-		046C2A352596617500F9048D /* crack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 046C2A342596617500F9048D /* crack.gif */; };
 		046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */; };
 		0488BC7F258F8EAD00D4D9FF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC7E258F8EAD00D4D9FF /* UserModel.swift */; };
 		04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC771259145EF008A7311 /* CoreDataManager.swift */; };
@@ -37,18 +37,18 @@
 
 /* Begin PBXFileReference section */
 		040E53C2258F6EC80046B64E /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		04161D1925A10D4700299B89 /* OdomoeterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OdomoeterViewController.swift; sourceTree = "<group>"; };
+		04161D2525A11F1600299B89 /* crack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = crack.gif; sourceTree = "<group>"; };
 		041DC5A3258687C300F60F21 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0431A84E2596705900528953 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		0464E96425800E2500802005 /* MyFondTransportnie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFondTransportnie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E96725800E2500802005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E96925800E2500802005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0464E96B25800E2500802005 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0464E96E25800E2500802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0464E97125800E2500802005 /* MyFondTransportnie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFondTransportnie.xcdatamodel; sourceTree = "<group>"; };
 		0464E97325800E2900802005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0464E97625800E2900802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0464E97825800E2900802005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		046C2A342596617500F9048D /* crack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = crack.gif; path = ../../../crack.gif; sourceTree = "<group>"; };
 		046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GusAndAlertsFourViewController.swift; sourceTree = "<group>"; };
 		0488BC7E258F8EAD00D4D9FF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		04DBC771259145EF008A7311 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -115,23 +115,39 @@
 		0464E96625800E2500802005 /* MyFondTransportnie */ = {
 			isa = PBXGroup;
 			children = (
+				046F936025A1C56D0073FDF5 /* Extension */,
 				04F174902582C6680064575F /* Cells */,
 				040E53C5258F6ED50046B64E /* Models */,
 				04E776062598F1D600A1EAF6 /* Networking */,
-				0464E96B25800E2500802005 /* MainViewController.swift */,
-				04EFE21025A095E10010AFFC /* ViewController.swift */,
-				04E775FC2597D3C800A1EAF6 /* DescVC.swift */,
-				046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */,
-				0464E97325800E2900802005 /* Assets.xcassets */,
+				046F936125A1C5D50073FDF5 /* Controllers */,
 				0464E96D25800E2500802005 /* Main.storyboard */,
+				0464E97325800E2900802005 /* Assets.xcassets */,
+				04161D2525A11F1600299B89 /* crack.gif */,
 				0464E97525800E2900802005 /* LaunchScreen.storyboard */,
-				046C2A342596617500F9048D /* crack.gif */,
 				0464E97825800E2900802005 /* Info.plist */,
 				0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */,
 				0464E96725800E2500802005 /* AppDelegate.swift */,
 				0464E96925800E2500802005 /* SceneDelegate.swift */,
 			);
 			path = MyFondTransportnie;
+			sourceTree = "<group>";
+		};
+		046F936025A1C56D0073FDF5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		046F936125A1C5D50073FDF5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04E775FC2597D3C800A1EAF6 /* DescVC.swift */,
+				04161D1925A10D4700299B89 /* OdomoeterViewController.swift */,
+				04EFE21025A095E10010AFFC /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		04E776062598F1D600A1EAF6 /* Networking */ = {
@@ -232,8 +248,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046C2A352596617500F9048D /* crack.gif in Resources */,
 				0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */,
+				04161D2625A11F1600299B89 /* crack.gif in Resources */,
 				0464E97425800E2900802005 /* Assets.xcassets in Resources */,
 				0464E96F25800E2500802005 /* Main.storyboard in Resources */,
 			);
@@ -312,12 +328,12 @@
 				04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */,
 				0431A84F2596705900528953 /* ModelController.swift in Sources */,
 				041DC5A4258687C300F60F21 /* APIManager.swift in Sources */,
-				0464E96C25800E2500802005 /* MainViewController.swift in Sources */,
 				04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */,
 				04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */,
 				04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */,
 				04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */,
 				0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */,
+				04161D1A25A10D4800299B89 /* OdomoeterViewController.swift in Sources */,
 				0464E96825800E2500802005 /* AppDelegate.swift in Sources */,
 				046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */,
 				0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */,
