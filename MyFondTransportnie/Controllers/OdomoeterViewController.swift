@@ -27,6 +27,11 @@ class OdomoeterViewController: UIViewController {
         imagePicker.mediaTypes = ["public.image"]
         addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
         setImage()
+        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
+        datePicker.setValue(false, forKeyPath: "highlightsToday")
+        print(datePicker)
+
+
         
     }
     
