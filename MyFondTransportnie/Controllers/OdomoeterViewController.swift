@@ -9,11 +9,14 @@ import UIKit
 import Photos
 
 class OdomoeterViewController: UIViewController {
-    
-    @IBOutlet var addPhotoBttn: [UIButton]!
+
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var finishImage: UIImageView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var endKmTf: UITextField!
+    @IBOutlet weak var startKmTf: UITextField!
+    @IBOutlet var probegTfCollection: [UITextField]!
+    @IBOutlet var addPhotoBttn: [UIButton]!
     
     var pickStartImageBegin = false
     var pickEndImageBegin = false
@@ -29,10 +32,14 @@ class OdomoeterViewController: UIViewController {
         setImage()
         datePicker.setValue(UIColor.black, forKeyPath: "textColor")
         datePicker.setValue(false, forKeyPath: "highlightsToday")
-        print(datePicker)
-
-
-        
+        probegTfCollection.forEach { $0.layer.borderColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
+            $0.backgroundColor = .white
+            $0.layer.borderWidth = 2
+            $0.borderStyle = .roundedRect
+            $0.layer.cornerRadius = 6
+            $0.attributedPlaceholder = NSAttributedString(string: "123456",
+                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        }
     }
     
     @IBAction func addStartImageAction(_ sender: UIButton) {
@@ -55,10 +62,6 @@ class OdomoeterViewController: UIViewController {
                         $0?.backgroundColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
                         $0?.layer.cornerRadius = 12
         }
-//
-//        startImage.image = image
-//        startImage.backgroundColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
-//        startImage.layer.cornerRadius = 12
     }
 }
 
@@ -68,7 +71,7 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
         print(info)
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         
         if pickStartImageBegin {
             startImage.image = image

@@ -8,7 +8,9 @@
 import UIKit
 
 class DescVC: UIViewController {
-
+    
+    @IBOutlet var viewsInAddTables: [UIView]!
+    @IBOutlet var addTables: [UITableView]!
     @IBOutlet weak var heightTableViewSomeOne: NSLayoutConstraint!
     @IBOutlet weak var heightTableViewTrans: NSLayoutConstraint!
     @IBOutlet weak var heightTableViewIt: NSLayoutConstraint!
@@ -43,12 +45,11 @@ class DescVC: UIViewController {
         heightTableViewIt.constant = 44
         heightTableViewTrans.constant = 44
         heightTableViewSomeOne.constant = 44
+        
+        viewsInAddTables.forEach {$0.layer.cornerRadius = 8}
+        addTables.forEach {$0.backgroundColor = .white}
     }
-    
-    @IBAction func addSomeOneAction(_ sender: Any) {
-        showActionSheet(profesion: "Все пользователи")
-    }
-    
+
     @IBAction func addITAction(_ sender: Any) {
         showActionSheet(profesion: "IT специалисты")
     }
@@ -57,15 +58,16 @@ class DescVC: UIViewController {
         showActionSheet(profesion: "Переводчики")
     }
     
+    @IBAction func addSomeOneAction(_ sender: Any) {
+        showActionSheet(profesion: "Все пользователи")
+    }
+    
     func showActionSheet(profesion: String){
         
         let myActionSheet = UIAlertController(title: profesion, message: "Виберите сотрудника", preferredStyle: UIAlertController.Style.actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
-//        let undefined = UIAlertAction(title: "Ввести вручную...", style: UIAlertAction.Style.destructive) { (action) in
-//
-//        }
-
+        
         switch profesion {
         case "IT специалисты":
             let itUsers = ModelController.getUsersStringArrray(byProf: "2")
@@ -108,7 +110,6 @@ class DescVC: UIViewController {
         }
         
         myActionSheet.addAction(cancelAction)
-        //myActionSheet.addAction(undefined)
 
         self.present(myActionSheet, animated: true, completion: nil)
     }
@@ -129,6 +130,7 @@ extension DescVC: UITableViewDelegate, UITableViewDataSource, UIActionSheetDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addITCell") as! addITCell
+        cell.layer.cornerRadius = 8
         if tableView.tag == 1 {
             cell.textLabel?.text = listOfItUsers[indexPath.row]
             return cell
@@ -142,9 +144,4 @@ extension DescVC: UITableViewDelegate, UITableViewDataSource, UIActionSheetDeleg
             return cell
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        //return UITableView.automaticDimension
-//    }
-
 }

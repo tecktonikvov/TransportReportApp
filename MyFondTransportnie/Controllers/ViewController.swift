@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         ModelController.vc = self
         setState(state: .nonAuthorise)
         CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
+        tableView.backgroundColor = .white
     }
     
     @IBAction func logoutAction(_ sender: Any) {
