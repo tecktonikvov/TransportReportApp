@@ -24,7 +24,7 @@ class APIManager: NSObject{
         AF.request("http://192.168.1.6/managment/api?token=\(token)&action=auth&user=\(login)&pass=\(pass)", requestModifier: { $0.timeoutInterval = 3 })
             .validate()
             .responseJSON { response in
-                
+
                 switch (response.result) {
                 case .success( _):
                     if response.description == "success(OK)"{
@@ -54,7 +54,7 @@ class APIManager: NSObject{
                     
                 case .failure(let error):
                     completion(.Error(error.localizedDescription))
-                    print("Request error: \(error.localizedDescription)")
+                    //print("Request error: \(error.localizedDescription)")
                 }
             }
     }

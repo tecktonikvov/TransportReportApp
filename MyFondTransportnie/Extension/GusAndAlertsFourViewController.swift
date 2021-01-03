@@ -123,5 +123,11 @@ extension ViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func showAutonomikModeAlert(){
+        let alertController = UIAlertController(title: "Приложение в автономном режиме", message: "Когда сервер станет доступен данные обновятся", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "ОК", style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 
 }

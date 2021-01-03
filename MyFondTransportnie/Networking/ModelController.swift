@@ -11,6 +11,7 @@ import CoreData
 
 class ModelController {
     static var vc: ViewController!
+    
     class func authFromAPI(login: String, pass: String){
         if UserSettings.userModel?.userName == nil { // логика созданию юсер моделс? ошибка авторизации
             APIManager.authorize(login: login, pass: pass, completion: { result, error  in
@@ -26,13 +27,12 @@ class ModelController {
                     let user = UserModel(userName: login)
                     UserSettings.userModel = user // Просто присваиваем обьект и он сохранится
                     vc.setState(state: .fetchengData)
-
                     
                 case "incorrectUserAuthData":
                     vc.showAthorizeAlert(somethingIncorrect: true)
                     
                 default:
-                    //controller.showCustomAlert(title: "Неизвесный ответ сервера", message: result!)
+                    print(result)
                     vc.setState(state: .fatalError(result ?? "Неизвестный ответ сервера"))
                 }
             })
@@ -43,19 +43,23 @@ class ModelController {
     
     class func getTripsFromAPI(){
         APIManager.fetchTrips(completion: { result in
-      
+                                let CDM = CoreDataManager()
+
                                 switch result{//тут получили результат из APIManager
                                 case .Success(let trips):
-                                    let CDM = CoreDataManager()
                                     CDM.clearData(forEntity: "Trip")
                                     CDM.saveInCoreDataTripWith(array: trips) // и сохранием в CoreData
                                     CDM.getTrips()
+                                    ModelController.getUsersFromAPI()
                                     vc.setState(state: .normal)
                                     
                                 case .Error(let error):
+                                    print("=========================")
                                     print(error)
                                     // вывести ошибку в кастом алерт, отправить в коллектор ошибок
-                                    vc.setState(state: .fatalError(error.debugDescription))
+                                    //vc.setState(state: .fatalError(error.debugDescription))
+                                    CDM.getTrips()
+                                    vc.setState(state: .autonomicMode)
                                     return
                                 }        })
     }
@@ -68,12 +72,12 @@ class ModelController {
                 CDM.clearData(forEntity: "User")
                 CDM.saveInCoreDataUserWith(array: users) // и сохранием в CoreData
                 vc.setState(state: .normal)
-                //print(users)
                 
             case .Error(let error):
                 print(error)
                 // вывести ошибку в кастом алерт, отправить в коллектор ошибок
-                vc.setState(state: .fatalError(error.debugDescription))
+                
+                //vc.setState(state: .fatalError(error.debugDescription))
                 return
             }
         })

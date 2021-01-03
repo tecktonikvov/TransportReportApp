@@ -18,9 +18,10 @@ class ViewController: UIViewController {
         case fetchengData
         case normal
         case fatalError(String)
-        case toDefaultSettings
+        case autonomicMode
     }
     
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var logoutButn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
@@ -52,7 +53,7 @@ class ViewController: UIViewController {
         CoreDataManager.vc = self
         ModelController.vc = self
         setState(state: .nonAuthorise)
-        CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
+        //CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
         tableView.backgroundColor = .white
     }
     
@@ -76,13 +77,17 @@ class ViewController: UIViewController {
         case .fetchengData:
             gus(setState: .show)
             ModelController.getTripsFromAPI()
-            ModelController.getUsersFromAPI()
+            //ModelController.getUsersFromAPI()
 
         case .normal:
             gus(setState: .hide)
             self.logoutButn.isEnabled = true
 
-        case .toDefaultSettings:
+        case .autonomicMode:
+            gus(setState: .hide)
+            navBar.title = "Поездки(автономно)"
+            showAutonomikModeAlert()
+            
             break
         case .fatalError(let massage):
             showCustomAlert(title: "Ну ничего, страшного", message: massage)

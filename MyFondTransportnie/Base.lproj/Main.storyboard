@@ -152,6 +152,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="logoutButn" destination="6V2-We-5xH" id="66v-kj-cn0"/>
+                        <outlet property="navBar" destination="G95-nz-Ene" id="OP0-OS-RYJ"/>
                         <outlet property="tableView" destination="rfQ-W2-lmo" id="jOg-sa-6ug"/>
                     </connections>
                 </viewController>

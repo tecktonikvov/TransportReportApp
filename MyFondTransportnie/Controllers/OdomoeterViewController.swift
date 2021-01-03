@@ -31,7 +31,7 @@ class OdomoeterViewController: UIViewController {
         addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
         setImage()
         datePicker.setValue(UIColor.black, forKeyPath: "textColor")
-        datePicker.setValue(false, forKeyPath: "highlightsToday")
+        //datePicker.setValue(false, forKeyPath: "highlightsToday")
         probegTfCollection.forEach { $0.layer.borderColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
             $0.backgroundColor = .white
             $0.layer.borderWidth = 2
@@ -72,11 +72,12 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
         
         print(info)
         let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
-        
+        let JPEGimage = image.jpegData(compressionQuality: 0.3)
+        let uiImage = UIImage(data: JPEGimage!)
         if pickStartImageBegin {
-            startImage.image = image
+            startImage.image = uiImage
         } else if pickEndImageBegin {
-            finishImage.image = image
+            finishImage.image = uiImage
         }
         
         picker.dismiss(animated: true, completion: nil)
