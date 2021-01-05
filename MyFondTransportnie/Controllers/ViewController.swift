@@ -25,17 +25,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var logoutButn: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
-    var users = [User]() {
-        didSet{
-            //print(users)
-        }
-    }
-    
     var trips = [Trip]() {
         didSet {
             trips.sort(by: { Int($0.odometer_start!)! > Int($1.odometer_start!)! })
             tableView.reloadData()
-            print("Variable trips in \(#file) was update, current count: \(trips.count)")
+            //print("Variable trips in \(#file) was update, current count: \(trips.count)")
         }
     }
     
@@ -85,7 +79,7 @@ class ViewController: UIViewController {
 
         case .autonomicMode:
             gus(setState: .hide)
-            navBar.title = "Поездки(автономно)"
+            navBar.title = "Поездки (автономно)"
             showAutonomikModeAlert()
             
             break
@@ -93,6 +87,15 @@ class ViewController: UIViewController {
             showCustomAlert(title: "Ну ничего, страшного", message: massage)
             break
             
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editTrip" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let tripToSend = trips[indexPath.row]
+            let descVC = segue.destination as! TabBarController
+            descVC.currentTrip = tripToSend
         }
     }
 }
@@ -120,19 +123,21 @@ extension  ViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }
         }
-        
+        cell.nameLabel.text = trip.persons
         cell.dateLabel.text  = trip.date
         cell.timeLabel.text  = trip.time
-        
-        if trip.refull == "1" {
-            if trip.fuel == "1" { // This is A-95
-                cell.benzLabel.text = "A-95"
-            } else {
-                cell.lpgLabel.text = "LPG"
-            }
-        }
 
+        if trip.gas == "1" {
+            cell.lpgLabel.text = "G"
+        }
+        if trip.gasoline == "1" {
+            cell.benzLabel.text = "B"
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

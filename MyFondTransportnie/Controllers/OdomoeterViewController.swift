@@ -9,7 +9,9 @@ import UIKit
 import Photos
 
 class OdomoeterViewController: UIViewController {
-
+    
+    var currentTrip: Trip?
+    
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var finishImage: UIImageView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -25,21 +27,8 @@ class OdomoeterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        imagePicker.mediaTypes = ["public.image"]
-        addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
-        setImage()
-        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
-        //datePicker.setValue(false, forKeyPath: "highlightsToday")
-        probegTfCollection.forEach { $0.layer.borderColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
-            $0.backgroundColor = .white
-            $0.layer.borderWidth = 2
-            $0.borderStyle = .roundedRect
-            $0.layer.cornerRadius = 6
-            $0.attributedPlaceholder = NSAttributedString(string: "123456",
-                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        }
+        setupController()
+        getCurrentTrip()
     }
     
     @IBAction func addStartImageAction(_ sender: UIButton) {
@@ -63,6 +52,43 @@ class OdomoeterViewController: UIViewController {
                         $0?.layer.cornerRadius = 12
         }
     }
+    
+    private func setupController(){
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.mediaTypes = ["public.image"]
+        addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
+        setImage()
+        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
+        //datePicker.setValue(false, forKeyPath: "highlightsToday")
+        probegTfCollection.forEach { $0.layer.borderColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
+            $0.backgroundColor = .white
+            $0.layer.borderWidth = 2
+            $0.borderStyle = .roundedRect
+            $0.layer.cornerRadius = 6
+            $0.attributedPlaceholder = NSAttributedString(string: "123456",
+                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        }
+    }
+    
+    private func getCurrentTrip(){
+        let firstVC = (self.tabBarController as! TabBarController).viewControllers![0] as! DescVC
+        guard let trip = firstVC.currentTrip else {return}
+        self.currentTrip = trip
+        unwrapCurrentTrip()
+    }
+    
+    private func unwrapCurrentTrip(){
+        startKmTf.text = currentTrip!.odometer_start
+        endKmTf.text = currentTrip!.odometer_end
+        
+        let dateString = (currentTrip!.date)! + " " + (currentTrip!.time)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let date = dateFormatter.date(from: dateString)!
+        datePicker.setDate(date, animated: true)
+    }
+
 }
 
 
@@ -89,6 +115,10 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
     
     func showActionSheet(){
         
+        let galleryIcon = #imageLiteral(resourceName: "gallery")
+        let cameraIcon = #imageLiteral(resourceName: "camera")
+
+        
         let myActionSheet = UIAlertController(title: "", message: "Источник", preferredStyle: UIAlertController.Style.actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
@@ -97,11 +127,16 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
   
             present(imagePicker, animated: true, completion: nil)
         }
+        imageFromGalleryAction.setValue(galleryIcon, forKey: "image")
+        
+        
         let imageFromCameraAction = UIAlertAction(title: "Сделать фото", style: UIAlertAction.Style.default) { [self] action in
             imagePicker.sourceType = .camera
             
             present(imagePicker, animated: true, completion: nil)
         }
+        imageFromCameraAction.setValue(cameraIcon, forKey: "image")
+
         
         myActionSheet.addAction(imageFromGalleryAction)
         myActionSheet.addAction(imageFromCameraAction)

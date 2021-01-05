@@ -9,6 +9,9 @@ import UIKit
 
 class DescVC: UIViewController {
     
+    var currentTrip: Trip?
+    var users: [String]?
+    
     @IBOutlet var viewsInAddTables: [UIView]!
     @IBOutlet var addTables: [UITableView]!
     @IBOutlet weak var heightTableViewSomeOne: NSLayoutConstraint!
@@ -45,9 +48,12 @@ class DescVC: UIViewController {
         heightTableViewIt.constant = 44
         heightTableViewTrans.constant = 44
         heightTableViewSomeOne.constant = 44
-        
         viewsInAddTables.forEach {$0.layer.cornerRadius = 8}
         addTables.forEach {$0.backgroundColor = .white}
+        
+        if currentTrip != nil {
+            findPersonFromCDM()
+        }
     }
 
     @IBAction func addITAction(_ sender: Any) {
@@ -60,6 +66,28 @@ class DescVC: UIViewController {
     
     @IBAction func addSomeOneAction(_ sender: Any) {
         showActionSheet(profesion: "Все пользователи")
+    }
+    
+    func findPersonFromCDM(){
+        let CDM = CoreDataManager()
+        let usersFromCD = CDM.getUsers()
+        guard let currentPersonsStr = currentTrip!.persons else { return }
+        
+        let personsAbbrevInArr = currentPersonsStr.split(separator: " ")
+        
+            for person in usersFromCD {
+                for abbrev in personsAbbrevInArr {
+                    if person.abbrev! == abbrev {
+                        if person.type == "2" { // if we found in CDM entity User with same abbrev as in trip, add tris person to the table
+                            self.listOfItUsers.append(person.surname_ru! + " " + person.name_ru!)
+                        } else if person.type == "3" {
+                            self.listOfTranslatorsUsers.append(person.surname_ru! + " " + person.name_ru!)
+                        } // type "3" - this is translators
+                        
+                    }
+                }
+            }
+        
     }
     
     func showActionSheet(profesion: String){
@@ -126,7 +154,6 @@ extension DescVC: UITableViewDelegate, UITableViewDataSource, UIActionSheetDeleg
             return listOfSomeOneUsers.count
         }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addITCell") as! addITCell

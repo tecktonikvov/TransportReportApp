@@ -12,6 +12,7 @@
 		04161D2625A11F1600299B89 /* crack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04161D2525A11F1600299B89 /* crack.gif */; };
 		041DC5A4258687C300F60F21 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041DC5A3258687C300F60F21 /* APIManager.swift */; };
 		0431A84F2596705900528953 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A84E2596705900528953 /* ModelController.swift */; };
+		045765ED25A25AE000282490 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045765EC25A25AE000282490 /* TabBarController.swift */; };
 		0464E96825800E2500802005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96725800E2500802005 /* AppDelegate.swift */; };
 		0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96925800E2500802005 /* SceneDelegate.swift */; };
 		0464E96F25800E2500802005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E96D25800E2500802005 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		04161D2525A11F1600299B89 /* crack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = crack.gif; sourceTree = "<group>"; };
 		041DC5A3258687C300F60F21 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0431A84E2596705900528953 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		045765EC25A25AE000282490 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0464E96425800E2500802005 /* MyFondTransportnie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFondTransportnie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E96725800E2500802005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E96925800E2500802005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				04161D2525A11F1600299B89 /* crack.gif */,
 				0464E97525800E2900802005 /* LaunchScreen.storyboard */,
 				0464E97825800E2900802005 /* Info.plist */,
+				045765EC25A25AE000282490 /* TabBarController.swift */,
 				0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */,
 				0464E96725800E2500802005 /* AppDelegate.swift */,
 				0464E96925800E2500802005 /* SceneDelegate.swift */,
@@ -316,6 +319,7 @@
 				04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */,
 				0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */,
 				04161D1A25A10D4800299B89 /* OdomoeterViewController.swift in Sources */,
+				045765ED25A25AE000282490 /* TabBarController.swift in Sources */,
 				0464E96825800E2500802005 /* AppDelegate.swift in Sources */,
 				046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */,
 				0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */,

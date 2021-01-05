@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "pointImage.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pointImage@2x.png",
+      "filename" : "gallery.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "pointImage@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
