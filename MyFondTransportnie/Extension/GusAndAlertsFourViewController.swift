@@ -30,9 +30,10 @@ extension ViewController {
                 let gif = try UIImage(gifName: "crack.gif")
                 let imageview = UIImageView(gifImage: gif, loopCount: 999)
                 imageview.frame = view.bounds
-                imageview.frame = CGRect(x: view.frame.width/2 - 150, y: view.frame.height/2 - 200, width: 300, height: 400)
+                imageview.frame = CGRect(x: view.frame.width/2 - 150, y: view.frame.height/2 - 240, width: 300, height: 400)
                 imageview.tag = 99
-                view.addSubview(imageview)
+                tableView.tableFooterView = UIView()
+                tableView.addSubview(imageview)
                 break
             } catch {
                 print(error)
@@ -95,27 +96,6 @@ extension ViewController {
         let test = NSPredicate(format:"SELF MATCHES %@", RegEx)
         
         return test.evaluate(with: firstInput) && test.evaluate(with: secondInput)
-    }
-    
-    func prepareAbbrevString(trip: Trip)->String {
-        //var personsStr = String()
-        var i = 0
-        if let tripPersons = trip.persons {
-            for person in tripPersons {
-
-                if i != 0 {
-//                    personsStr += ", " + person.abbrev
-                } else {
-                    //personsStr += person.abbrev
-                }
-                i += 1
-            }
-            
-            return "Koz, BW"
-        } else {
-            return "Koz, BW"
-            //return String()
-        }
     }
     
     func showCustomAlert(title: String, message: String){

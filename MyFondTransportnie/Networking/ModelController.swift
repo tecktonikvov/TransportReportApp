@@ -32,7 +32,6 @@ class ModelController {
                     vc.showAthorizeAlert(somethingIncorrect: true)
                     
                 default:
-                    print(result)
                     vc.setState(state: .fatalError(result ?? "Неизвестный ответ сервера"))
                 }
             })

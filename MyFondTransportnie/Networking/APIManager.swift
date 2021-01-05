@@ -44,7 +44,7 @@ class APIManager: NSObject{
     
     class func fetchTrips(completion: @escaping (Result<[[String:AnyObject]]>) -> ()) {
         let login = "Koz"
-        AF.request("http://192.168.1.6/managment/api?token=\(token)&action=getTrips&user=\(login)&pass=Koz")
+        AF.request("http://192.168.1.6/managment/api?token=\(token)&action=getTrips&user=\(login)&pass=Koz", requestModifier: { $0.timeoutInterval = 3 })
             .validate()
             .responseJSON { response in
 
@@ -77,50 +77,4 @@ class APIManager: NSObject{
                 }
             }
     }
-    
-//    class func fetchUsers(completion: @escaping ([User]?, Error?) -> ()) {
-//
-//        let login = "Koz"
-//        AF.request("http://192.168.1.6/managment/api?token=\(token)&action=getUsers&user=\(login)")
-//            .validate()
-//            .responseJSON { response in
-//                print()
-//                switch (response.result) {
-//                case .success( _):
-//
-//                    let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-//                    fetchRequest.predicate = NSPredicate(format: "active != nil")
-//
-//                    var records = 0
-//
-//                    do {
-//                        let count = try context.count(for: fetchRequest)
-//                        records = count
-//                        print("just get a count")
-//                    } catch {
-//                        print(error.localizedDescription)
-//                    }
-//
-//                    let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-//
-//
-//
-////                    do {
-////                        let users = try JSONDecoder().decode([User].self, from: response.data!)
-////                        completion(users, nil)
-////
-////                    } catch let error as NSError {
-////                        completion(nil, error)
-////                        print("Failed to load: \(error.localizedDescription)")
-////                        print(error)
-////                    }
-////
-//                case .failure(let error):
-//                    completion(nil, error)
-//                    print("Request error: \(error.localizedDescription)")
-//                    print(error)
-//                }
-//            }
-//    }
-    
 }

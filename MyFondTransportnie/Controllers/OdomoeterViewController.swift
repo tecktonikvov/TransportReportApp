@@ -19,7 +19,7 @@ class OdomoeterViewController: UIViewController {
     @IBOutlet weak var startKmTf: UITextField!
     @IBOutlet var probegTfCollection: [UITextField]!
     @IBOutlet var addPhotoBttn: [UIButton]!
-    
+
     var pickStartImageBegin = false
     var pickEndImageBegin = false
 
@@ -27,6 +27,8 @@ class OdomoeterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.endKmTf.delegate = self
+        self.startKmTf.delegate = self
         setupController()
         getCurrentTrip()
     }
@@ -41,6 +43,10 @@ class OdomoeterViewController: UIViewController {
         pickStartImageBegin = false
         pickEndImageBegin = true
         showActionSheet()
+    }
+    
+    @IBAction func tapAnyWhere(_ sender: Any) {
+        view.endEditing(true)
     }
     
     func setImage(){
@@ -60,7 +66,12 @@ class OdomoeterViewController: UIViewController {
         addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
         setImage()
         datePicker.setValue(UIColor.black, forKeyPath: "textColor")
-        //datePicker.setValue(false, forKeyPath: "highlightsToday")
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+            datePicker.setValue(UIColor.black, forKeyPath: "textColor")
+            datePicker.setValue(false, forKeyPath: "highlightsToday")
+          }
+        
         probegTfCollection.forEach { $0.layer.borderColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
             $0.backgroundColor = .white
             $0.layer.borderWidth = 2
@@ -69,11 +80,15 @@ class OdomoeterViewController: UIViewController {
             $0.attributedPlaceholder = NSAttributedString(string: "123456",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         }
+        
+        endKmTf.keyboardType = .numberPad
+        startKmTf.keyboardType = .numberPad
+
     }
     
     private func getCurrentTrip(){
-        let firstVC = (self.tabBarController as! TabBarController).viewControllers![0] as! DescVC
-        guard let trip = firstVC.currentTrip else {return}
+        let tabBarVC = (self.tabBarController as! TabBarController).viewControllers![0] as! DescVC
+        guard let trip = tabBarVC.currentTrip else {return}
         self.currentTrip = trip
         unwrapCurrentTrip()
     }
@@ -88,11 +103,10 @@ class OdomoeterViewController: UIViewController {
         let date = dateFormatter.date(from: dateString)!
         datePicker.setDate(date, animated: true)
     }
-
 }
 
 
-extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
@@ -143,5 +157,10 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
         myActionSheet.addAction(cancelAction)
         
         self.present(myActionSheet, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }

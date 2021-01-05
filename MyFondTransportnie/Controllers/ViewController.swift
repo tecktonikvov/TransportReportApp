@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
     let CDM = CoreDataManager()
     static let shared = ViewController()
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
         case normal
         case fatalError(String)
         case autonomicMode
+        case refreshing
     }
     
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var logoutButn: UIBarButtonItem!
-    @IBOutlet weak var tableView: UITableView!
     
     var trips = [Trip]() {
         didSet {
@@ -50,7 +50,8 @@ class ViewController: UIViewController {
         //CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
         tableView.backgroundColor = .white
     }
-    
+
+//MARK: @IBActions
     @IBAction func logoutAction(_ sender: Any) {
         UserSettings.userModel = nil
         trips = [Trip]()
@@ -58,6 +59,11 @@ class ViewController: UIViewController {
         setState(state: .nonAuthorise)
     }
     
+    @IBAction func refreshControllAction(_ sender: Any) {
+        setState(state: .refreshing)
+    }
+    
+ //MARK: VC function
     func setState(state: VCState){
         switch state{
         case .nonAuthorise:
@@ -71,16 +77,21 @@ class ViewController: UIViewController {
         case .fetchengData:
             gus(setState: .show)
             ModelController.getTripsFromAPI()
-            //ModelController.getUsersFromAPI()
-
+        //ModelController.getUsersFromAPI()
+        
         case .normal:
+            self.refreshControl?.endRefreshing()
             gus(setState: .hide)
             self.logoutButn.isEnabled = true
-
+            
         case .autonomicMode:
+            self.refreshControl?.endRefreshing()
             gus(setState: .hide)
             navBar.title = "Поездки (автономно)"
             showAutonomikModeAlert()
+            
+        case .refreshing:
+            ModelController.getTripsFromAPI()
             
             break
         case .fatalError(let massage):
@@ -89,7 +100,7 @@ class ViewController: UIViewController {
             
         }
     }
-    
+//MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editTrip" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -98,24 +109,22 @@ class ViewController: UIViewController {
             descVC.currentTrip = tripToSend
         }
     }
-}
-
-extension  ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+// MARK: TableView Delagate & DataSource
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell") as! TripTableViewCell
         let trip = trips[indexPath.row]
         cell.benzLabel.text = ""
         cell.lpgLabel.text = ""
         let indexUp = indexPath.row + 1
         
-        cell.nameLabel.text = prepareAbbrevString(trip: trip)
         cell.startRangeLabel.text = trip.odometer_start
         cell.endRangeLabel.text = trip.odometer_end
-
+        
         if indexPath.row != trips.count - 1{
             if cell.startRangeLabel.text != trips[indexUp].odometer_end {
                 cell.backgroundColor = #colorLiteral(red: 1, green: 0.8984109074, blue: 0.8925564463, alpha: 1)
@@ -126,7 +135,7 @@ extension  ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = trip.persons
         cell.dateLabel.text  = trip.date
         cell.timeLabel.text  = trip.time
-
+        
         if trip.gas == "1" {
             cell.lpgLabel.text = "G"
         }
@@ -136,7 +145,7 @@ extension  ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
