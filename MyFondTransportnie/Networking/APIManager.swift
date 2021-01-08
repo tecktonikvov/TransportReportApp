@@ -16,7 +16,6 @@ class APIManager: NSObject{
     case Error(String)
     }
     
-    static let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
     static let token = "ca1cecb73dc49d9cf54565c258b4a5bd"
     static var trips = [Trip]()
     

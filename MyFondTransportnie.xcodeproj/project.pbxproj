@@ -127,7 +127,6 @@
 				04161D2525A11F1600299B89 /* crack.gif */,
 				0464E97525800E2900802005 /* LaunchScreen.storyboard */,
 				0464E97825800E2900802005 /* Info.plist */,
-				045765EC25A25AE000282490 /* TabBarController.swift */,
 				0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */,
 				0464E96725800E2500802005 /* AppDelegate.swift */,
 				0464E96925800E2500802005 /* SceneDelegate.swift */,
@@ -149,6 +148,7 @@
 				04E775FC2597D3C800A1EAF6 /* DescVC.swift */,
 				04161D1925A10D4700299B89 /* OdomoeterViewController.swift */,
 				04EFE21025A095E10010AFFC /* ViewController.swift */,
+				045765EC25A25AE000282490 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

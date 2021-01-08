@@ -7,6 +7,7 @@
 
 import UIKit
 import Photos
+import Kingfisher
 
 class OdomoeterViewController: UIViewController {
     
@@ -19,7 +20,9 @@ class OdomoeterViewController: UIViewController {
     @IBOutlet weak var startKmTf: UITextField!
     @IBOutlet var probegTfCollection: [UITextField]!
     @IBOutlet var addPhotoBttn: [UIButton]!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     var pickStartImageBegin = false
     var pickEndImageBegin = false
 
@@ -31,6 +34,38 @@ class OdomoeterViewController: UIViewController {
         self.startKmTf.delegate = self
         setupController()
         getCurrentTrip()
+        setOdometerImage()
+        print(currentTrip)
+    }
+    
+    func setOdometerImage(){
+        let endUrlString = currentTrip?.odometer_end_img_url
+        let startUrlString = currentTrip?.odometer_start_img_url
+        
+        let processor = DownsamplingImageProcessor(size: startImage.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: 20)
+        startImage.kf.indicatorType = .activity
+
+        if startUrlString != "" {
+            let startUrl = URL(string: startUrlString!)
+            DispatchQueue.main.async {
+                self.startImage.kf.setImage(with: startUrl,options: [.processor(processor),
+                                                                .scaleFactor(UIScreen.main.scale),
+                                                                .transition(.fade(1)),
+                                                                .cacheOriginalImage
+                                                                ])
+                }
+            
+        } else { print("Trip id: \(String(describing: currentTrip?.id)) has no start image urlSring") }
+        
+        if endUrlString != "" {
+            let endUrl = URL(string: endUrlString!)
+            finishImage.kf.setImage(with: endUrl, options: [.processor(processor),
+                                                            .scaleFactor(UIScreen.main.scale),
+                                                            .transition(.fade(1)),
+                                                            .cacheOriginalImage
+                                                            ])
+        } else { print("Trip id: \(String(describing: currentTrip?.id)) has no finish image urlSring") }
     }
     
     @IBAction func addStartImageAction(_ sender: UIButton) {
@@ -164,3 +199,4 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
         return false
     }
 }
+

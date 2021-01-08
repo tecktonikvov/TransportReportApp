@@ -18,8 +18,5 @@ class TabBarController: UITabBarController {
             (self.viewControllers![0] as! DescVC).currentTrip = currentTrip!
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear TabBarController")
 
-    }
 }
