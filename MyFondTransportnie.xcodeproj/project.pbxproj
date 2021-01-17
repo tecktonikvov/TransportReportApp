@@ -11,28 +11,33 @@
 		04161D1A25A10D4800299B89 /* OdomoeterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04161D1925A10D4700299B89 /* OdomoeterViewController.swift */; };
 		04161D2625A11F1600299B89 /* crack.gif in Resources */ = {isa = PBXBuildFile; fileRef = 04161D2525A11F1600299B89 /* crack.gif */; };
 		041DC5A4258687C300F60F21 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041DC5A3258687C300F60F21 /* APIManager.swift */; };
-		0431A84F2596705900528953 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A84E2596705900528953 /* ModelController.swift */; };
+		0423154025B0E4DA00D7D477 /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423153F25B0E4DA00D7D477 /* TripModel.swift */; };
+		0423155525B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0423155325B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld */; };
+		0431A84F2596705900528953 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0431A84E2596705900528953 /* DataManager.swift */; };
 		045765ED25A25AE000282490 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045765EC25A25AE000282490 /* TabBarController.swift */; };
 		0464E96825800E2500802005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96725800E2500802005 /* AppDelegate.swift */; };
 		0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464E96925800E2500802005 /* SceneDelegate.swift */; };
 		0464E96F25800E2500802005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E96D25800E2500802005 /* Main.storyboard */; };
-		0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */; };
 		0464E97425800E2900802005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97325800E2900802005 /* Assets.xcassets */; };
 		0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97525800E2900802005 /* LaunchScreen.storyboard */; };
 		046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */; };
-		0488BC7F258F8EAD00D4D9FF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488BC7E258F8EAD00D4D9FF /* UserModel.swift */; };
 		04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC771259145EF008A7311 /* CoreDataManager.swift */; };
+		04DCCF4025A8BF7D00BEB9EB /* APIGeocodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF3F25A8BF7D00BEB9EB /* APIGeocodingManager.swift */; };
+		04DCCF4725A8BFAE00BEB9EB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF4625A8BFAE00BEB9EB /* LocationService.swift */; };
+		04DCCF4B25A8C99E00BEB9EB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF4A25A8C99E00BEB9EB /* Address.swift */; };
+		04DCCF4F25A8CC1D00BEB9EB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF4E25A8CC1D00BEB9EB /* UserModel.swift */; };
+		04DCCF5725A8E6D300BEB9EB /* PointViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF5625A8E6D300BEB9EB /* PointViewCell.swift */; };
+		04DCCF5A25A8E70600BEB9EB /* PointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF5925A8E70600BEB9EB /* PointViewController.swift */; };
 		04E2A87A25990A1400FE2784 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87925990A1400FE2784 /* CoreDataStack.swift */; };
-		04E2A880259DF8B300FE2784 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87F259DF8B200FE2784 /* Trip+CoreDataProperties.swift */; };
-		04E2A881259DF8B300FE2784 /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87E259DF8B200FE2784 /* Trip+CoreDataClass.swift */; };
 		04E775FD2597D3C800A1EAF6 /* DescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E775FC2597D3C800A1EAF6 /* DescVC.swift */; };
 		04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E775FF2597D5DB00A1EAF6 /* addITCell.swift */; };
-		04E776032598E37100A1EAF6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E776022598E37100A1EAF6 /* User.swift */; };
 		04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */; };
 		04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */; };
 		04EFE21125A095E10010AFFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFE21025A095E10010AFFC /* ViewController.swift */; };
-		04F174862582B85F0064575F /* TtripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F174852582B85F0064575F /* TtripModel.swift */; };
+		04F174862582B85F0064575F /* PointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F174852582B85F0064575F /* PointModel.swift */; };
 		04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1748A2582B9920064575F /* TripTableViewCell.swift */; };
+		04F35A1A25AB74000097446B /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F35A1925AB74000097446B /* Trip+CoreDataProperties.swift */; };
+		04F35A1B25AB74000097446B /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F35A1825AB74000097446B /* Trip+CoreDataClass.swift */; };
 		B068A8AB762FEB7CD38EC0E4 /* Pods_MyFondTransportnie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,30 +46,36 @@
 		04161D1925A10D4700299B89 /* OdomoeterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OdomoeterViewController.swift; sourceTree = "<group>"; };
 		04161D2525A11F1600299B89 /* crack.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = crack.gif; sourceTree = "<group>"; };
 		041DC5A3258687C300F60F21 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		0431A84E2596705900528953 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		0423153F25B0E4DA00D7D477 /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
+		0423155425B32A5400D7D477 /* MyFondTransportnie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFondTransportnie.xcdatamodel; sourceTree = "<group>"; };
+		0423155725B32AAD00D7D477 /* MyFondTransportnie 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyFondTransportnie 2.xcdatamodel"; sourceTree = "<group>"; };
+		0431A84E2596705900528953 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		045765EC25A25AE000282490 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0464E96425800E2500802005 /* MyFondTransportnie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFondTransportnie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464E96725800E2500802005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464E96925800E2500802005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0464E96E25800E2500802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0464E97125800E2500802005 /* MyFondTransportnie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyFondTransportnie.xcdatamodel; sourceTree = "<group>"; };
 		0464E97325800E2900802005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0464E97625800E2900802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0464E97825800E2900802005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GusAndAlertsFourViewController.swift; sourceTree = "<group>"; };
-		0488BC7E258F8EAD00D4D9FF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		04DBC771259145EF008A7311 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		04DCCF3F25A8BF7D00BEB9EB /* APIGeocodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGeocodingManager.swift; sourceTree = "<group>"; };
+		04DCCF4625A8BFAE00BEB9EB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		04DCCF4A25A8C99E00BEB9EB /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		04DCCF4E25A8CC1D00BEB9EB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		04DCCF5625A8E6D300BEB9EB /* PointViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewCell.swift; sourceTree = "<group>"; };
+		04DCCF5925A8E70600BEB9EB /* PointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewController.swift; sourceTree = "<group>"; };
 		04E2A87925990A1400FE2784 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		04E2A87E259DF8B200FE2784 /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		04E2A87F259DF8B200FE2784 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		04E775FC2597D3C800A1EAF6 /* DescVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescVC.swift; sourceTree = "<group>"; };
 		04E775FF2597D5DB00A1EAF6 /* addITCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addITCell.swift; sourceTree = "<group>"; };
-		04E776022598E37100A1EAF6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		04EFE21025A095E10010AFFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		04F174852582B85F0064575F /* TtripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TtripModel.swift; sourceTree = "<group>"; };
+		04F174852582B85F0064575F /* PointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModel.swift; sourceTree = "<group>"; };
 		04F1748A2582B9920064575F /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		04F35A1825AB74000097446B /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04F35A1925AB74000097446B /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1ED05A10DAD9F53EE9D933C5 /* Pods-MyFondTransportnie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.debug.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.debug.xcconfig"; sourceTree = "<group>"; };
 		ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFondTransportnie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBE43757909D2FB56005446 /* Pods-MyFondTransportnie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.release.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,15 +96,51 @@
 		040E53C5258F6ED50046B64E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				04E2A87E259DF8B200FE2784 /* Trip+CoreDataClass.swift */,
-				04E2A87F259DF8B200FE2784 /* Trip+CoreDataProperties.swift */,
 				04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */,
 				04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */,
-				04F174852582B85F0064575F /* TtripModel.swift */,
-				0488BC7E258F8EAD00D4D9FF /* UserModel.swift */,
-				04E776022598E37100A1EAF6 /* User.swift */,
+				04F35A1825AB74000097446B /* Trip+CoreDataClass.swift */,
+				04F35A1925AB74000097446B /* Trip+CoreDataProperties.swift */,
+				04F174852582B85F0064575F /* PointModel.swift */,
+				0423153F25B0E4DA00D7D477 /* TripModel.swift */,
+				04DCCF4A25A8C99E00BEB9EB /* Address.swift */,
+				04DCCF4E25A8CC1D00BEB9EB /* UserModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0423154325B31FB300D7D477 /* APIManagers */ = {
+			isa = PBXGroup;
+			children = (
+				041DC5A3258687C300F60F21 /* APIManager.swift */,
+				04DCCF3F25A8BF7D00BEB9EB /* APIGeocodingManager.swift */,
+			);
+			path = APIManagers;
+			sourceTree = "<group>";
+		};
+		0423154425B31FE900D7D477 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				04DBC771259145EF008A7311 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0423154625B3206A00D7D477 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04DCCF4625A8BFAE00BEB9EB /* LocationService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		0423154725B3209900D7D477 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0464E96725800E2500802005 /* AppDelegate.swift */,
+				04E2A87925990A1400FE2784 /* CoreDataStack.swift */,
+				0464E96925800E2500802005 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		0464E95B25800E2500802005 = {
@@ -117,19 +164,19 @@
 		0464E96625800E2500802005 /* MyFondTransportnie */ = {
 			isa = PBXGroup;
 			children = (
-				046F936025A1C56D0073FDF5 /* Extension */,
+				0423154725B3209900D7D477 /* Application */,
 				04F174902582C6680064575F /* Cells */,
+				046F936125A1C5D50073FDF5 /* Controllers */,
+				0423154425B31FE900D7D477 /* CoreData */,
+				046F936025A1C56D0073FDF5 /* Extension */,
 				040E53C5258F6ED50046B64E /* Models */,
 				04E776062598F1D600A1EAF6 /* Networking */,
-				046F936125A1C5D50073FDF5 /* Controllers */,
 				0464E96D25800E2500802005 /* Main.storyboard */,
 				0464E97325800E2900802005 /* Assets.xcassets */,
 				04161D2525A11F1600299B89 /* crack.gif */,
+				0423155325B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld */,
 				0464E97525800E2900802005 /* LaunchScreen.storyboard */,
 				0464E97825800E2900802005 /* Info.plist */,
-				0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */,
-				0464E96725800E2500802005 /* AppDelegate.swift */,
-				0464E96925800E2500802005 /* SceneDelegate.swift */,
 			);
 			path = MyFondTransportnie;
 			sourceTree = "<group>";
@@ -149,6 +196,7 @@
 				04161D1925A10D4700299B89 /* OdomoeterViewController.swift */,
 				04EFE21025A095E10010AFFC /* ViewController.swift */,
 				045765EC25A25AE000282490 /* TabBarController.swift */,
+				04DCCF5925A8E70600BEB9EB /* PointViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,11 +204,10 @@
 		04E776062598F1D600A1EAF6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				04DBC771259145EF008A7311 /* CoreDataManager.swift */,
+				0423154325B31FB300D7D477 /* APIManagers */,
+				0423154625B3206A00D7D477 /* Services */,
 				040E53C2258F6EC80046B64E /* UserSettings.swift */,
-				0431A84E2596705900528953 /* ModelController.swift */,
-				041DC5A3258687C300F60F21 /* APIManager.swift */,
-				04E2A87925990A1400FE2784 /* CoreDataStack.swift */,
+				0431A84E2596705900528953 /* DataManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -169,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				04F1748A2582B9920064575F /* TripTableViewCell.swift */,
+				04DCCF5625A8E6D300BEB9EB /* PointViewCell.swift */,
 				04E775FF2597D5DB00A1EAF6 /* addITCell.swift */,
 			);
 			path = Cells;
@@ -306,27 +354,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E2A881259DF8B300FE2784 /* Trip+CoreDataClass.swift in Sources */,
-				04E2A880259DF8B300FE2784 /* Trip+CoreDataProperties.swift in Sources */,
-				04F174862582B85F0064575F /* TtripModel.swift in Sources */,
+				04F174862582B85F0064575F /* PointModel.swift in Sources */,
+				04DCCF5725A8E6D300BEB9EB /* PointViewCell.swift in Sources */,
 				04EFE21125A095E10010AFFC /* ViewController.swift in Sources */,
 				04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */,
-				0431A84F2596705900528953 /* ModelController.swift in Sources */,
+				0431A84F2596705900528953 /* DataManager.swift in Sources */,
 				041DC5A4258687C300F60F21 /* APIManager.swift in Sources */,
+				0423155525B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld in Sources */,
 				04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */,
+				04F35A1B25AB74000097446B /* Trip+CoreDataClass.swift in Sources */,
+				04DCCF5A25A8E70600BEB9EB /* PointViewController.swift in Sources */,
+				04F35A1A25AB74000097446B /* Trip+CoreDataProperties.swift in Sources */,
+				04DCCF4F25A8CC1D00BEB9EB /* UserModel.swift in Sources */,
 				04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */,
 				04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */,
+				04DCCF4725A8BFAE00BEB9EB /* LocationService.swift in Sources */,
 				04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */,
-				0464E97225800E2500802005 /* MyFondTransportnie.xcdatamodeld in Sources */,
 				04161D1A25A10D4800299B89 /* OdomoeterViewController.swift in Sources */,
 				045765ED25A25AE000282490 /* TabBarController.swift in Sources */,
+				04DCCF4025A8BF7D00BEB9EB /* APIGeocodingManager.swift in Sources */,
 				0464E96825800E2500802005 /* AppDelegate.swift in Sources */,
+				04DCCF4B25A8C99E00BEB9EB /* Address.swift in Sources */,
 				046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */,
+				0423154025B0E4DA00D7D477 /* TripModel.swift in Sources */,
 				0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */,
 				04E2A87A25990A1400FE2784 /* CoreDataStack.swift in Sources */,
-				04E776032598E37100A1EAF6 /* User.swift in Sources */,
 				040E53C3258F6EC80046B64E /* UserSettings.swift in Sources */,
-				0488BC7F258F8EAD00D4D9FF /* UserModel.swift in Sources */,
 				04E775FD2597D3C800A1EAF6 /* DescVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,12 +588,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0464E97025800E2500802005 /* MyFondTransportnie.xcdatamodeld */ = {
+		0423155325B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0464E97125800E2500802005 /* MyFondTransportnie.xcdatamodel */,
+				0423155725B32AAD00D7D477 /* MyFondTransportnie 2.xcdatamodel */,
+				0423155425B32A5400D7D477 /* MyFondTransportnie.xcdatamodel */,
 			);
-			currentVersion = 0464E97125800E2500802005 /* MyFondTransportnie.xcdatamodel */;
+			currentVersion = 0423155725B32AAD00D7D477 /* MyFondTransportnie 2.xcdatamodel */;
 			path = MyFondTransportnie.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

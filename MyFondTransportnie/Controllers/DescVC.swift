@@ -9,6 +9,7 @@ import UIKit
 
 class DescVC: UIViewController {
     
+    var newTrip: TripModel?
     var currentTrip: Trip?
     var users: [String]?
     
@@ -51,8 +52,10 @@ class DescVC: UIViewController {
         viewsInAddTables.forEach {$0.layer.cornerRadius = 8}
         addTables.forEach {$0.backgroundColor = .white}
         
+        currentTrip = (self.tabBarController as! TabBarController).currentTrip
+        
         if currentTrip != nil {
-            findPersonFromCDM()
+            findPersons()
         }
     }
 
@@ -68,9 +71,8 @@ class DescVC: UIViewController {
         showActionSheet(profesion: "Все пользователи")
     }
     
-    func findPersonFromCDM(){
-        let CDM = CoreDataManager()
-        let usersFromCD = CDM.getUsers()
+    func findPersons(){
+        let usersFromCD = DataManager.getUsersFromCoreData()
         guard let currentPersonsStr = currentTrip!.persons else { return }
         
         let personsAbbrevInArr = currentPersonsStr.split(separator: " ")
@@ -83,11 +85,9 @@ class DescVC: UIViewController {
                         } else if person.type == "3" {
                             self.listOfTranslatorsUsers.append(person.surname_ru! + " " + person.name_ru!)
                         } // type "3" - this is translators
-                        
                     }
                 }
             }
-        
     }
     
     func showActionSheet(profesion: String){
@@ -98,7 +98,7 @@ class DescVC: UIViewController {
         
         switch profesion {
         case "IT специалисты":
-            let itUsers = ModelController.getUsersStringArrray(byProf: "2")
+            let itUsers = DataManager.getUsersStringArrray(byProf: "2")
             for name in itUsers {
                 let newActionByName = UIAlertAction(title: name, style: UIAlertAction.Style.default) {action in
                     if !self.listOfItUsers.contains(name) {
@@ -109,7 +109,7 @@ class DescVC: UIViewController {
             }
 
         case "Переводчики":
-            let transUsers = ModelController.getUsersStringArrray(byProf: "3")
+            let transUsers = DataManager.getUsersStringArrray(byProf: "3")
             for name in transUsers {
                 let newActionByName = UIAlertAction(title: name, style: UIAlertAction.Style.default) {action in
                     if !self.listOfTranslatorsUsers.contains(name) {
@@ -122,8 +122,8 @@ class DescVC: UIViewController {
             
         case "Все пользователи":
             var allUsers = [String]()
-            allUsers.append(contentsOf: ModelController.getUsersStringArrray(byProf: "1"))
-            allUsers.append(contentsOf: ModelController.getUsersStringArrray(byProf: "4"))
+            allUsers.append(contentsOf: DataManager.getUsersStringArrray(byProf: "1"))
+            allUsers.append(contentsOf: DataManager.getUsersStringArrray(byProf: "4"))
             for name in allUsers {
                 let newActionByName = UIAlertAction(title: name, style: UIAlertAction.Style.default) {action in
                     if !self.listOfSomeOneUsers.contains(name) {

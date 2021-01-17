@@ -84,7 +84,7 @@ extension ViewController {
                 self.present(alertController, animated: true, completion: nil)
                 
             } else {
-                ModelController.authFromAPI( login: login!, pass: pass!)
+                DataManager.authFromAPI( login: login!, pass: pass!)
             }
         }))
         self.present(alertController, animated: true, completion: nil)
@@ -108,6 +108,5 @@ extension ViewController {
         alertController.addAction(UIAlertAction(title: "ОК", style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
-    
-
 }
+

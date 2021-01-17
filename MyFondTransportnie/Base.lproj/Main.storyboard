@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MyFond-->
         <scene sceneID="oi0-jn-8E4">
             <objects>
                 <tableViewController id="efj-ul-rrY" customClass="ViewController" customModule="MyFondTransportnie" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PIU-HB-hZ2" customClass="ViewCo">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PIU-HB-hZ2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -118,7 +118,7 @@
                             <outlet property="delegate" destination="efj-ul-rrY" id="b8w-KF-glM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="4dl-11-9fD">
+                    <navigationItem key="navigationItem" title="MyFond" id="4dl-11-9fD">
                         <barButtonItem key="leftBarButtonItem" title="Выйти" id="arF-ol-CrH">
                             <connections>
                                 <action selector="logoutAction:" destination="efj-ul-rrY" id="dif-GA-AGT"/>
@@ -126,7 +126,8 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Ic-fm-1Wz">
                             <connections>
-                                <segue destination="aPr-l5-fie" kind="show" id="tJN-z6-CXa"/>
+                                <action selector="addNewTripPressed:" destination="efj-ul-rrY" id="tpF-2E-ht0"/>
+                                <segue destination="aPr-l5-fie" kind="show" identifier="addNewTrip" id="tJN-z6-CXa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -171,21 +172,144 @@
         <!--Места-->
         <scene sceneID="ksw-Bf-WEB">
             <objects>
-                <viewController id="BDn-Gj-FAV" sceneMemberID="viewController">
+                <viewController id="BDn-Gj-FAV" customClass="PointViewController" customModule="MyFondTransportnie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ymx-AA-MVT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NiN-Sb-d6K">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="Yt0-uw-oHZ">
+                                    <rect key="frame" x="0.0" y="259" width="375" height="38"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJb-0b-Wtc">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="38"/>
+                                            <color key="backgroundColor" red="1" green="0.5828639269" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Add"/>
+                                            <connections>
+                                                <action selector="addButtonPressed:" destination="BDn-Gj-FAV" eventType="touchUpInside" id="3F4-0Q-yhr"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="RJb-0b-Wtc" firstAttribute="top" secondItem="Yt0-uw-oHZ" secondAttribute="top" id="2PW-CV-fdA"/>
+                                        <constraint firstAttribute="bottom" secondItem="RJb-0b-Wtc" secondAttribute="bottom" id="aHz-xq-2iD"/>
+                                        <constraint firstItem="RJb-0b-Wtc" firstAttribute="centerX" secondItem="Yt0-uw-oHZ" secondAttribute="centerX" id="b3O-8F-xin"/>
+                                        <constraint firstItem="RJb-0b-Wtc" firstAttribute="leading" secondItem="Yt0-uw-oHZ" secondAttribute="leading" constant="16" id="pYN-BL-l4l"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointCell" rowHeight="203" id="TIQ-NI-v5P" customClass="PointViewCell" customModule="MyFondTransportnie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="203"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TIQ-NI-v5P" id="rzz-86-Hc8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ld-1u-WXd">
+                                                    <rect key="frame" x="16" y="11" width="252" height="34"/>
+                                                    <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Улица" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-3t-VwN">
+                                                    <rect key="frame" x="16" y="53" width="252" height="34"/>
+                                                    <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="№ дома" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMK-wE-hxa">
+                                                    <rect key="frame" x="276" y="11" width="83" height="34"/>
+                                                    <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Цель поездки" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TlJ-kn-r1g">
+                                                    <rect key="frame" x="16" y="95" width="343" height="99"/>
+                                                    <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="99" id="Ab3-og-N6B"/>
+                                                    </constraints>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                                </textView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiH-5s-D7F">
+                                                    <rect key="frame" x="276" y="53" width="83" height="34"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="GPS"/>
+                                                    <connections>
+                                                        <action selector="gpsButtnPressed:" destination="TIQ-NI-v5P" eventType="touchUpInside" id="pmm-Jl-P2A"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vMK-wE-hxa" secondAttribute="trailing" constant="16" id="1r0-qz-q0z"/>
+                                                <constraint firstItem="yiH-5s-D7F" firstAttribute="leading" secondItem="vMK-wE-hxa" secondAttribute="leading" id="9lK-Jm-8zC"/>
+                                                <constraint firstItem="Teb-3t-VwN" firstAttribute="top" secondItem="7ld-1u-WXd" secondAttribute="bottom" constant="8" symbolic="YES" id="Cia-vR-iEw"/>
+                                                <constraint firstItem="yiH-5s-D7F" firstAttribute="trailing" secondItem="vMK-wE-hxa" secondAttribute="trailing" id="FeK-j8-zrI"/>
+                                                <constraint firstItem="vMK-wE-hxa" firstAttribute="top" secondItem="rzz-86-Hc8" secondAttribute="top" constant="11" id="Mxs-i6-R3v"/>
+                                                <constraint firstItem="TlJ-kn-r1g" firstAttribute="top" secondItem="Teb-3t-VwN" secondAttribute="bottom" constant="8" symbolic="YES" id="OM2-1a-Ifa"/>
+                                                <constraint firstItem="yiH-5s-D7F" firstAttribute="leading" secondItem="Teb-3t-VwN" secondAttribute="trailing" constant="8" symbolic="YES" id="QiM-DK-kqP"/>
+                                                <constraint firstAttribute="trailing" secondItem="TlJ-kn-r1g" secondAttribute="trailing" constant="16" id="Tm9-S8-Q6g"/>
+                                                <constraint firstItem="yiH-5s-D7F" firstAttribute="top" secondItem="Teb-3t-VwN" secondAttribute="top" id="WR6-xR-Fj1"/>
+                                                <constraint firstItem="TlJ-kn-r1g" firstAttribute="top" secondItem="yiH-5s-D7F" secondAttribute="bottom" constant="8" symbolic="YES" id="Zf4-U7-E1J"/>
+                                                <constraint firstItem="vMK-wE-hxa" firstAttribute="leading" secondItem="7ld-1u-WXd" secondAttribute="trailing" constant="8" symbolic="YES" id="bGM-bg-JOa"/>
+                                                <constraint firstItem="7ld-1u-WXd" firstAttribute="top" secondItem="rzz-86-Hc8" secondAttribute="top" constant="11" id="d8F-ch-FaD"/>
+                                                <constraint firstAttribute="bottom" secondItem="TlJ-kn-r1g" secondAttribute="bottom" constant="9" id="hhT-T9-WVE"/>
+                                                <constraint firstItem="7ld-1u-WXd" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="jUk-bG-Ea2"/>
+                                                <constraint firstItem="Teb-3t-VwN" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="n4H-bg-mld"/>
+                                                <constraint firstItem="TlJ-kn-r1g" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="vBE-W2-lQY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cityTF" destination="7ld-1u-WXd" id="Kiw-yW-9ls"/>
+                                            <outlet property="descriptionTF" destination="TlJ-kn-r1g" id="3kb-fC-3BM"/>
+                                            <outlet property="gpsButton" destination="yiH-5s-D7F" id="qsl-Wm-xOM"/>
+                                            <outlet property="numberTF" destination="vMK-wE-hxa" id="P69-zO-2U8"/>
+                                            <outlet property="streetTF" destination="Teb-3t-VwN" id="qKN-UF-f1C"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BDn-Gj-FAV" id="Ajx-6f-iGC"/>
+                                    <outlet property="delegate" destination="BDn-Gj-FAV" id="OzN-Z2-g5b"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2kV-fk-6ud"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NiN-Sb-d6K" firstAttribute="leading" secondItem="2kV-fk-6ud" secondAttribute="leading" id="5WS-YQ-FgH"/>
+                            <constraint firstItem="NiN-Sb-d6K" firstAttribute="top" secondItem="2kV-fk-6ud" secondAttribute="top" id="7Ak-aP-yW3"/>
+                            <constraint firstItem="2kV-fk-6ud" firstAttribute="trailing" secondItem="NiN-Sb-d6K" secondAttribute="trailing" id="KCY-e4-y4c"/>
+                            <constraint firstItem="2kV-fk-6ud" firstAttribute="bottom" secondItem="NiN-Sb-d6K" secondAttribute="bottom" id="gyz-f5-8UA"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Места" image="pointImage" selectedImage="pointImage" id="y5p-UV-7RS">
                         <color key="badgeColor" red="0.01164645945" green="0.77207780029999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="addButton" destination="RJb-0b-Wtc" id="dJf-9L-bly"/>
+                        <outlet property="tableView" destination="NiN-Sb-d6K" id="mTi-eT-Srn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fx7-ZF-Kjr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4757" y="-244"/>
+            <point key="canvasLocation" x="4756" y="-244.22788605697153"/>
         </scene>
         <!--Пробег-->
         <scene sceneID="iPH-hU-eRH">
@@ -626,7 +750,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="liC-kq-4PX"/>
+        <segue reference="tJN-z6-CXa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="odometerToTabBar" width="25" height="25"/>
@@ -634,6 +758,9 @@
         <image name="workerImage" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

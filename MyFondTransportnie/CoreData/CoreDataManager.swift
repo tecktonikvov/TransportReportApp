@@ -9,7 +9,6 @@ import Foundation
 import CoreData
 
 class CoreDataManager {
-    static var vc: ViewController!
     static let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
     
     private func createUserEntityFrom(dictionary: [String:AnyObject]) -> NSManagedObject? {
@@ -50,7 +49,7 @@ class CoreDataManager {
             userEntity.date = dictionary["date"] as? String
             userEntity.time = dictionary["time"] as? String
             userEntity.persons = dictionary["persons"] as? String
-            userEntity.points = dictionary["points"] as? String
+            //userEntity.points_obj = dictionary["points"] as? NSAttributedStringTransformer // NSObject
             userEntity.odometer_start_img_url = dictionary["odometer_start_img_url"] as? String
             userEntity.odometer_end_img_url = dictionary["odometer_end_img_url"] as? String
             return userEntity
@@ -58,30 +57,44 @@ class CoreDataManager {
         return nil
     }
     
-    func saveInCoreDataTripWith(array: [[String: AnyObject]]) {
-            _ = array.map{self.createTripEntityFrom(dictionary: $0)} // это функция высокого порядка
-        //$0 представляет каждый из елементов array используя замыкание, в котором вы можете выполнять другие функции к каждому из этих элементов
-        // на вход createUserEntityFrom() при помощи array.map() мы передаем по одному елементу массива array где он инициализируется
-        // как userEntity и добавляется в контекст
-            do {
-                try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
-                print("Save trip success")
-            } catch let error {
-                print(error)
-            }
+    func createNewEntity(entity: String) -> NSManagedObject? {
+        switch entity {
+        case "Trip":
+            return (NSEntityDescription.insertNewObject(forEntityName: "Trip", into: CoreDataManager.context) as? Trip)
+
+        case "User":
+            return (NSEntityDescription.insertNewObject(forEntityName: "User", into: CoreDataManager.context) as? User)
+
+        default:
+            return nil
         }
+    }
     
-    func saveInCoreDataUserWith(array: [[String: AnyObject]]) {
-            _ = array.map{self.createUserEntityFrom(dictionary: $0)} 
-            do {
-                try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
-                // и сохранияем контекст
-            } catch let error {
-                print(error)
-            }
+    func saveInCoreDataEntityWith(entityName: String, array: [[String: AnyObject]]) -> Bool {
+        switch entityName {
+        case "User":
+            clearData(forEntity: entityName)
+            _ = array.map{self.createUserEntityFrom(dictionary: $0)}
+            
+        case "Trip":
+            clearData(forEntity: entityName)
+            _ = array.map{self.createTripEntityFrom(dictionary: $0)}
+            
+        default:
+            break
         }
+        
+        do {
+            try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
+            return true
+            
+        } catch let error {
+            print(error)
+            return false
+        }
+    }
     
-    func clearData(forEntity: String) {
+    private func clearData(forEntity: String) {
             do {
                 let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
                 let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: forEntity)
@@ -89,24 +102,23 @@ class CoreDataManager {
                     let objects  = try context.fetch(fetchRequest) as? [NSManagedObject]
                     _ = objects.map{$0.map{context.delete($0)}}
                     CoreDataStack.sharedInstance.saveContext()
+                    print("-CoreData: drop data for entity: \(forEntity)")
                 } catch let error {
-                    print("ERROR DELETING : \(error)")
+                    print("[!]CoreData: Clear CoreData for entity: \(forEntity) error : \(error)")
                 }
             }
         }
     
-    func getTrips(){
+    func getTrips() -> [Trip] {
         let fetchRequest: NSFetchRequest<Trip> = Trip.fetchRequest()
-        
+        let result = [Trip]()
         do {
-            let result = try CoreDataManager.context.fetch(fetchRequest)
-            if result.isEmpty {
-                print("Cant fetch Trips in function: \(#function) file: \(#file)")
-            }
-            CoreDataManager.vc.trips = result
+            let resultr = try CoreDataManager.context.fetch(fetchRequest)
+            return resultr
             
         } catch let error as NSError {
             print(error.userInfo)
+            return result
         }
     }
     
@@ -115,17 +127,12 @@ class CoreDataManager {
         
         do {
             let result = try CoreDataManager.context.fetch(fetchRequest)
-            if result.isEmpty {
-                print("Cant fetch Users in function: \(#function) file: \(#file)")
-            }
-            print("Users from coreData fetched in count: \(result.count)")
             return result
             
         } catch let error as NSError {
             print(error.userInfo)
         }
-        return [User()]
+        return [User]()
     }
-    
-    
 }
+

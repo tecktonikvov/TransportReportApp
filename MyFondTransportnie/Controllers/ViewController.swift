@@ -10,7 +10,6 @@ import CoreData
 
 class ViewController: UITableViewController {
     
-    let CDM = CoreDataManager()
     static let shared = ViewController()
     
     enum VCState {
@@ -29,7 +28,6 @@ class ViewController: UITableViewController {
         didSet {
             trips.sort(by: { Int($0.odometer_start!)! > Int($1.odometer_start!)! })
             tableView.reloadData()
-            //print("Variable trips in \(#file) was update, current count: \(trips.count)")
         }
     }
     
@@ -44,26 +42,15 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoreDataManager.vc = self
-        ModelController.vc = self
+        DataManager.vc = self
         setState(state: .nonAuthorise)
         //CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
-        tableView.backgroundColor = .white
-    }
 
-//MARK: @IBActions
-    @IBAction func logoutAction(_ sender: Any) {
-        UserSettings.userModel = nil
-        trips = [Trip]()
-        tableView.reloadData()
-        setState(state: .nonAuthorise)
+        tableView.backgroundColor = .white
+        //ModelController.getAddresFromGeoAPI()
     }
     
-    @IBAction func refreshControllAction(_ sender: Any) {
-        setState(state: .refreshing)
-    }
-    
- //MARK: VC function
+ //MARK: - VC state switch
     func setState(state: VCState){
         switch state{
         case .nonAuthorise:
@@ -76,8 +63,8 @@ class ViewController: UITableViewController {
             
         case .fetchengData:
             gus(setState: .show)
-            ModelController.getTripsFromAPI()
-        //ModelController.getUsersFromAPI()
+            DataManager.getTrips()
+            DataManager.fetchUsersFromAPI()
         
         case .normal:
             self.refreshControl?.endRefreshing()
@@ -91,26 +78,40 @@ class ViewController: UITableViewController {
             showAutonomikModeAlert()
             
         case .refreshing:
-            ModelController.getTripsFromAPI()
+            DataManager.getTrips()
+            DataManager.fetchUsersFromAPI()
             
-            break
         case .fatalError(let massage):
             showCustomAlert(title: "Ну ничего, страшного", message: massage)
-            break
             
         }
     }
-//MARK: Segue
+//MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editTrip" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let tripToSend = trips[indexPath.row]
-            let descVC = segue.destination as! TabBarController
-            descVC.currentTrip = tripToSend
+            let selectedTrip = trips[indexPath.row]
+            let destVC = segue.destination as! TabBarController
+            destVC.currentTrip = selectedTrip
         }
     }
     
-// MARK: TableView Delagate & DataSource
+//MARK: - @IBActions
+    @IBAction func logoutAction(_ sender: Any) {
+        UserSettings.userModel = nil
+        trips = [Trip]()
+        tableView.reloadData()
+        setState(state: .nonAuthorise)
+    }
+    
+    @IBAction func refreshControllAction(_ sender: Any) {
+        setState(state: .refreshing)
+    }
+    
+    @IBAction func addNewTripPressed(_ sender: Any) {
+    }
+    
+// MARK: - TableView Delagate & DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips.count
     }

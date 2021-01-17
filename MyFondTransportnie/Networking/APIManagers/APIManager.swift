@@ -35,7 +35,7 @@ class APIManager: NSObject{
                     }
                     
                 case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    //print("Request error: \(error.localizedDescription)")
                     completion(nil, error)
                 }
             }

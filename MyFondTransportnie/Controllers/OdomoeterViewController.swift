@@ -11,7 +11,15 @@ import Kingfisher
 
 class OdomoeterViewController: UIViewController {
     
-    var currentTrip: Trip?
+    var tabBar: TabBarController!
+    var currentTrip: Trip?{
+        didSet{
+            if currentTrip?.id != nil {
+                setOdometerImage()
+                insertData()
+            }
+        }
+    }
     
     @IBOutlet weak var startImage: UIImageView!
     @IBOutlet weak var finishImage: UIImageView!
@@ -30,22 +38,38 @@ class OdomoeterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.endKmTf.delegate = self
-        self.startKmTf.delegate = self
+        tabBar = (self.tabBarController as! TabBarController)
+        endKmTf.delegate = self
+        startKmTf.delegate = self
+        currentTrip = tabBar!.currentTrip
         setupController()
-        getCurrentTrip()
-        setOdometerImage()
-        print(currentTrip)
+        addDoneButtonOnKeyboard()
     }
     
-    func setOdometerImage(){
-        let endUrlString = currentTrip?.odometer_end_img_url
-        let startUrlString = currentTrip?.odometer_start_img_url
+    override func viewDidDisappear(_ animated: Bool) {
+        tabBar!.newTrip!.odometer_start = startKmTf.text!
+        tabBar!.newTrip!.odometer_end = endKmTf.text!
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let selectedDate = dateFormatter.string(from: datePicker.date)
         
+        dateFormatter.dateFormat = "HH:mm"
+        let selectedTime = dateFormatter.string(from: datePicker.date)
+        
+        tabBar!.newTrip!.date = selectedDate
+        tabBar!.newTrip!.time = selectedTime
+        print(tabBar!.newTrip)
+    }
+
+    func setOdometerImage(){
+        let startUrlString = currentTrip?.odometer_start_img_url
+        let endUrlString = currentTrip?.odometer_end_img_url
+                
         let processor = DownsamplingImageProcessor(size: startImage.bounds.size)
             |> RoundCornerImageProcessor(cornerRadius: 20)
         startImage.kf.indicatorType = .activity
-
+        
         if startUrlString != "" {
             let startUrl = URL(string: startUrlString!)
             DispatchQueue.main.async {
@@ -56,7 +80,7 @@ class OdomoeterViewController: UIViewController {
                                                                 ])
                 }
             
-        } else { print("Trip id: \(String(describing: currentTrip?.id)) has no start image urlSring") }
+        } else { print("[!]Trip id: \(String(describing: currentTrip?.id)) has no start image urlSring") }
         
         if endUrlString != "" {
             let endUrl = URL(string: endUrlString!)
@@ -65,7 +89,7 @@ class OdomoeterViewController: UIViewController {
                                                             .transition(.fade(1)),
                                                             .cacheOriginalImage
                                                             ])
-        } else { print("Trip id: \(String(describing: currentTrip?.id)) has no finish image urlSring") }
+        } else { print("[!]Trip id: \(String(describing: currentTrip?.id)) has no finish image urlSring") }
     }
     
     @IBAction func addStartImageAction(_ sender: UIButton) {
@@ -84,7 +108,12 @@ class OdomoeterViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func setImage(){
+    private func setupController(){
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.mediaTypes = ["public.image"]
+        addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
+        
         let images = [startImage, finishImage]
         let image = #imageLiteral(resourceName: "defaultOdometer")
         
@@ -92,14 +121,7 @@ class OdomoeterViewController: UIViewController {
                         $0?.backgroundColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
                         $0?.layer.cornerRadius = 12
         }
-    }
-    
-    private func setupController(){
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        imagePicker.mediaTypes = ["public.image"]
-        addPhotoBttn.forEach {$0.layer.cornerRadius = 6}
-        setImage()
+        
         datePicker.setValue(UIColor.black, forKeyPath: "textColor")
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
@@ -115,37 +137,47 @@ class OdomoeterViewController: UIViewController {
             $0.attributedPlaceholder = NSAttributedString(string: "123456",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         }
-        
         endKmTf.keyboardType = .numberPad
         startKmTf.keyboardType = .numberPad
-
     }
     
-    private func getCurrentTrip(){
-        let tabBarVC = (self.tabBarController as! TabBarController).viewControllers![0] as! DescVC
-        guard let trip = tabBarVC.currentTrip else {return}
-        self.currentTrip = trip
-        unwrapCurrentTrip()
-    }
-    
-    private func unwrapCurrentTrip(){
-        startKmTf.text = currentTrip!.odometer_start
+    private func insertData(){
         endKmTf.text = currentTrip!.odometer_end
+        startKmTf.text = currentTrip!.odometer_start
         
         let dateString = (currentTrip!.date)! + " " + (currentTrip!.time)!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let date = dateFormatter.date(from: dateString)!
+        
         datePicker.setDate(date, animated: true)
     }
-}
+    
+    func addDoneButtonOnKeyboard(){
+            let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+            doneToolbar.barStyle = .default
 
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+
+            let items = [flexSpace, done]
+            doneToolbar.items = items
+            doneToolbar.sizeToFit()
+
+            endKmTf.inputAccessoryView = doneToolbar
+            startKmTf.inputAccessoryView = doneToolbar
+        }
+
+        @objc func doneButtonAction(){
+            startKmTf.resignFirstResponder()
+            endKmTf.resignFirstResponder()
+        }
+}
 
 extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
-        print(info)
         let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         let JPEGimage = image.jpegData(compressionQuality: 0.3)
         let uiImage = UIImage(data: JPEGimage!)
@@ -154,7 +186,6 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
         } else if pickEndImageBegin {
             finishImage.image = uiImage
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
 
@@ -163,10 +194,8 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
     }
     
     func showActionSheet(){
-        
         let galleryIcon = #imageLiteral(resourceName: "gallery")
         let cameraIcon = #imageLiteral(resourceName: "camera")
-
         
         let myActionSheet = UIAlertController(title: "", message: "Источник", preferredStyle: UIAlertController.Style.actionSheet)
         
@@ -185,7 +214,6 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
             present(imagePicker, animated: true, completion: nil)
         }
         imageFromCameraAction.setValue(cameraIcon, forKey: "image")
-
         
         myActionSheet.addAction(imageFromGalleryAction)
         myActionSheet.addAction(imageFromCameraAction)

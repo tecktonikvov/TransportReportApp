@@ -22,7 +22,17 @@ class CoreDataStack: NSObject{
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
+        
+        
         let container = NSPersistentCloudKitContainer(name: "MyFondTransportnie")
+        
+//        add necessary support for migration
+//        let description = NSPersistentStoreDescription()
+//        description.shouldMigrateStoreAutomatically = true
+//        description.shouldInferMappingModelAutomatically = true
+//        container.persistentStoreDescriptions =  [description]
+//        add necessary support for migration
+        
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -41,6 +51,8 @@ class CoreDataStack: NSObject{
         })
         return container
     }()
+        
+
 
     // MARK: - Core Data Saving support
 
@@ -62,4 +74,11 @@ class CoreDataStack: NSObject{
                 print (url.absoluteString)
             }
         }
+}
+
+@objc(NSAttributedStringTransformer)
+class NSAttributedStringTransformer: NSSecureUnarchiveFromDataTransformer {
+    override class var allowedTopLevelClasses: [AnyClass] {
+        return super.allowedTopLevelClasses + [NSAttributedString.self]
+    }
 }

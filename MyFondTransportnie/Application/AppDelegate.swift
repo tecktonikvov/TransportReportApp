@@ -13,7 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // этот метод срабатывает когда приложение азгрузилось и прогружает какие то допы
+        let path = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+        print("\(path)")
+
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle

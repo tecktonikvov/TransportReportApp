@@ -4,7 +4,6 @@
 //
 //  Created by Mac on 20.12.2020.
 //
-
 import Foundation
 
 class UserModel: NSObject, NSCoding {

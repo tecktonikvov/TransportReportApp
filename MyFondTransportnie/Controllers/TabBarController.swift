@@ -6,17 +6,23 @@
 //
 
 import UIKit
+import CoreData
 
 class TabBarController: UITabBarController {
-
-    static var shared = TabBarController()
+    
     var currentTrip: Trip?
+    var newTrip: Trip?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if currentTrip != nil {
-            (self.viewControllers![0] as! DescVC).currentTrip = currentTrip!
+        if currentTrip == nil {
+            newTrip = DataManager.getNewEntity(entityName: "Trip")
         }
     }
-
+    
+    deinit {
+        print("TabBar Deinit")
+    }
 }
+
+
