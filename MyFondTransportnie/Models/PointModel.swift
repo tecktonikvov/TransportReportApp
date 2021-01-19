@@ -13,17 +13,17 @@ import Foundation
 //
 //    }
 //
-    struct Point: Codable {
-        let type, sity, street, no: String
-           let targetRu, targetDe, distance: String?
-
-           enum CodingKeys: String, CodingKey {
-               case type, sity, street, no
-               case targetRu = "target_ru"
-               case targetDe = "target_de"
-               case distance
-           }
-    }
+//    struct Point: Codable {
+//        let type, sity, street, no: String
+//           let targetRu, targetDe, distance: String?
+//
+//           enum CodingKeys: String, CodingKey {
+//               case type, sity, street, no
+//               case targetRu = "target_ru"
+//               case targetDe = "target_de"
+//               case distance
+//           }
+//    }
 
 //    {"type":"parking","sity":"Николаев / Nikolaev","street":"Чкалова / Chkalova","no":"25а"},
 //    {"type":"point","sity":"Воскресенское / Woskresenskoje","street":"ул. Почтовая / ul. Potschtowaja","no":"3","target_ru":"Фотосъемка Дубровиной","target_de":"Hausfotoset von Dubrovina","distance":"17.9"},

@@ -25,34 +25,58 @@ class CoreDataManager {
         return nil
     }
     
+    private func createPointEntityFrom(dictionary: NSArray, tripEntity: Trip) -> [Any] {
+        let dict = dictionary as Array
+        var resultArr = [Any]()
+
+        for point in dict {
+            let pointEntity = Point(context: CoreDataManager.context) //Создаем сущность засовуем в контекст
+            pointEntity.sity = point["sity"] as? String
+            pointEntity.type = point["type"] as? String
+            pointEntity.street = point["street"] as? String
+            pointEntity.no = point["no"] as? String
+            pointEntity.target_ru = point["target_ru"] as? String
+            pointEntity.target_de = point["target_de"] as? String
+            pointEntity.distance = point["distance"] as? Double ?? 0.0
+            resultArr.append(pointEntity)
+        }
+        return resultArr
+    }
+    
     private func createTripEntityFrom(dictionary: [String:AnyObject]) -> NSManagedObject? {
-        if let userEntity = NSEntityDescription.insertNewObject(forEntityName: "Trip", into: CoreDataManager.context) as? Trip {
-            userEntity.id = dictionary["id"] as? String
-            userEntity.trip_name = dictionary["trip_name"] as? String
-            userEntity.odometer_start = dictionary["odometer_start"] as? String
-            userEntity.odometer_start_img = dictionary["odometer_start_img"] as? String
-            userEntity.odometer_end = dictionary["odometer_end"] as? String
-            userEntity.odometer_end_img = dictionary["odometer_end_img"] as? String
-            userEntity.direct_img = dictionary["direct_img"] as? String
-            userEntity.refull = dictionary["refull"] as? String
-            userEntity.fuel = dictionary["fuel"] as? String
-            userEntity.gas = dictionary["gas"] as? String
-            userEntity.gas_capacity = dictionary["gas_capacity"] as? String
-            userEntity.gas_cost = dictionary["gas_cost"] as? String
-            userEntity.gasoline = dictionary["gasoline"] as? String
-            userEntity.gasoline_capacity = dictionary["gasoline_capacity"] as? String
-            userEntity.gasoline_cost = dictionary["gasoline_cost"] as? String
-            userEntity.fuel_capacity = dictionary["fuel_capacity"] as? String
-            userEntity.cost = dictionary["cost"] as? String
-            userEntity.routs = dictionary["routs"] as? String
-            userEntity.start_point = dictionary["start_point"] as? String
-            userEntity.date = dictionary["date"] as? String
-            userEntity.time = dictionary["time"] as? String
-            userEntity.persons = dictionary["persons"] as? String
-            //userEntity.points_obj = dictionary["points"] as? NSAttributedStringTransformer // NSObject
-            userEntity.odometer_start_img_url = dictionary["odometer_start_img_url"] as? String
-            userEntity.odometer_end_img_url = dictionary["odometer_end_img_url"] as? String
-            return userEntity
+        if let entity = NSEntityDescription.insertNewObject(forEntityName: "Trip", into: CoreDataManager.context) as? Trip {
+
+            entity.id = dictionary["id"] as? String
+            entity.trip_name = dictionary["trip_name"] as? String
+            entity.odometer_start = dictionary["odometer_start"] as? String
+            entity.odometer_start_img = dictionary["odometer_start_img"] as? String
+            entity.odometer_end = dictionary["odometer_end"] as? String
+            entity.odometer_end_img = dictionary["odometer_end_img"] as? String
+            entity.direct_img = dictionary["direct_img"] as? String
+            entity.refull = dictionary["refull"] as? String
+            entity.fuel = dictionary["fuel"] as? String
+            entity.gas = dictionary["gas"] as? String
+            entity.gas_capacity = dictionary["gas_capacity"] as? String
+            entity.gas_cost = dictionary["gas_cost"] as? String
+            entity.gasoline = dictionary["gasoline"] as? String
+            entity.gasoline_capacity = dictionary["gasoline_capacity"] as? String
+            entity.gasoline_cost = dictionary["gasoline_cost"] as? String
+            entity.fuel_capacity = dictionary["fuel_capacity"] as? String
+            entity.cost = dictionary["cost"] as? String
+            entity.routs = dictionary["routs"] as? String
+            entity.start_point = dictionary["start_point"] as? String
+            entity.date = dictionary["date"] as? String
+            entity.time = dictionary["time"] as? String
+            entity.persons = dictionary["persons"] as? String
+                        
+            if let pointsArr = dictionary["points"] as? NSArray {
+                let pointsEntity =  createPointEntityFrom(dictionary: pointsArr, tripEntity: entity)
+                entity.point = NSSet.init(array: pointsEntity)
+            }
+            
+            entity.odometer_start_img_url = dictionary["odometer_start_img_url"] as? String
+            entity.odometer_end_img_url = dictionary["odometer_end_img_url"] as? String
+            return entity
         }
         return nil
     }
@@ -77,6 +101,7 @@ class CoreDataManager {
             _ = array.map{self.createUserEntityFrom(dictionary: $0)}
             
         case "Trip":
+            clearData(forEntity: "Point")
             clearData(forEntity: entityName)
             _ = array.map{self.createTripEntityFrom(dictionary: $0)}
             

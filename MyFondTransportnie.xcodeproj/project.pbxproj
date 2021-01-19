@@ -21,6 +21,12 @@
 		0464E97425800E2900802005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97325800E2900802005 /* Assets.xcassets */; };
 		0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97525800E2900802005 /* LaunchScreen.storyboard */; };
 		046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */; };
+		04A3F75025B60DF400B243E3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F74B25B60DF400B243E3 /* User+CoreDataClass.swift */; };
+		04A3F75125B60DF400B243E3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F74725B60DF400B243E3 /* User+CoreDataProperties.swift */; };
+		04A3F75825B774A300B243E3 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F75425B774A200B243E3 /* Point+CoreDataClass.swift */; };
+		04A3F75925B774A300B243E3 /* Point+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F75525B774A300B243E3 /* Point+CoreDataProperties.swift */; };
+		04A3F75E25B780E800B243E3 /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F75C25B780E800B243E3 /* Trip+CoreDataClass.swift */; };
+		04A3F75F25B780E800B243E3 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F75D25B780E800B243E3 /* Trip+CoreDataProperties.swift */; };
 		04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DBC771259145EF008A7311 /* CoreDataManager.swift */; };
 		04DCCF4025A8BF7D00BEB9EB /* APIGeocodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF3F25A8BF7D00BEB9EB /* APIGeocodingManager.swift */; };
 		04DCCF4725A8BFAE00BEB9EB /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DCCF4625A8BFAE00BEB9EB /* LocationService.swift */; };
@@ -31,13 +37,9 @@
 		04E2A87A25990A1400FE2784 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2A87925990A1400FE2784 /* CoreDataStack.swift */; };
 		04E775FD2597D3C800A1EAF6 /* DescVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E775FC2597D3C800A1EAF6 /* DescVC.swift */; };
 		04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E775FF2597D5DB00A1EAF6 /* addITCell.swift */; };
-		04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */; };
-		04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */; };
 		04EFE21125A095E10010AFFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EFE21025A095E10010AFFC /* ViewController.swift */; };
 		04F174862582B85F0064575F /* PointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F174852582B85F0064575F /* PointModel.swift */; };
 		04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1748A2582B9920064575F /* TripTableViewCell.swift */; };
-		04F35A1A25AB74000097446B /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F35A1925AB74000097446B /* Trip+CoreDataProperties.swift */; };
-		04F35A1B25AB74000097446B /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F35A1825AB74000097446B /* Trip+CoreDataClass.swift */; };
 		B068A8AB762FEB7CD38EC0E4 /* Pods_MyFondTransportnie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,13 @@
 		0464E97625800E2900802005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0464E97825800E2900802005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GusAndAlertsFourViewController.swift; sourceTree = "<group>"; };
+		04709BC125B4C16E0083CB86 /* MyFondTransportnie 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyFondTransportnie 3.xcdatamodel"; sourceTree = "<group>"; };
+		04A3F74725B60DF400B243E3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		04A3F74B25B60DF400B243E3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04A3F75425B774A200B243E3 /* Point+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Point+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Point+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04A3F75525B774A300B243E3 /* Point+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Point+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Point+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		04A3F75C25B780E800B243E3 /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		04A3F75D25B780E800B243E3 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		04DBC771259145EF008A7311 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		04DCCF3F25A8BF7D00BEB9EB /* APIGeocodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGeocodingManager.swift; sourceTree = "<group>"; };
 		04DCCF4625A8BFAE00BEB9EB /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -69,13 +78,9 @@
 		04E2A87925990A1400FE2784 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		04E775FC2597D3C800A1EAF6 /* DescVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescVC.swift; sourceTree = "<group>"; };
 		04E775FF2597D5DB00A1EAF6 /* addITCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addITCell.swift; sourceTree = "<group>"; };
-		04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		04EFE21025A095E10010AFFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04F174852582B85F0064575F /* PointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModel.swift; sourceTree = "<group>"; };
 		04F1748A2582B9920064575F /* TripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
-		04F35A1825AB74000097446B /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		04F35A1925AB74000097446B /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		1ED05A10DAD9F53EE9D933C5 /* Pods-MyFondTransportnie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.debug.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.debug.xcconfig"; sourceTree = "<group>"; };
 		ABF1F4B4EA779F75D45D263E /* Pods_MyFondTransportnie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFondTransportnie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCBE43757909D2FB56005446 /* Pods-MyFondTransportnie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFondTransportnie.release.xcconfig"; path = "Target Support Files/Pods-MyFondTransportnie/Pods-MyFondTransportnie.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,10 +101,12 @@
 		040E53C5258F6ED50046B64E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				04E7760F2598F95400A1EAF6 /* User+CoreDataClass.swift */,
-				04E7760E2598F95400A1EAF6 /* User+CoreDataProperties.swift */,
-				04F35A1825AB74000097446B /* Trip+CoreDataClass.swift */,
-				04F35A1925AB74000097446B /* Trip+CoreDataProperties.swift */,
+				04A3F75C25B780E800B243E3 /* Trip+CoreDataClass.swift */,
+				04A3F75D25B780E800B243E3 /* Trip+CoreDataProperties.swift */,
+				04A3F75425B774A200B243E3 /* Point+CoreDataClass.swift */,
+				04A3F75525B774A300B243E3 /* Point+CoreDataProperties.swift */,
+				04A3F74B25B60DF400B243E3 /* User+CoreDataClass.swift */,
+				04A3F74725B60DF400B243E3 /* User+CoreDataProperties.swift */,
 				04F174852582B85F0064575F /* PointModel.swift */,
 				0423153F25B0E4DA00D7D477 /* TripModel.swift */,
 				04DCCF4A25A8C99E00BEB9EB /* Address.swift */,
@@ -357,17 +364,14 @@
 				04F174862582B85F0064575F /* PointModel.swift in Sources */,
 				04DCCF5725A8E6D300BEB9EB /* PointViewCell.swift in Sources */,
 				04EFE21125A095E10010AFFC /* ViewController.swift in Sources */,
-				04E776112598F95400A1EAF6 /* User+CoreDataClass.swift in Sources */,
 				0431A84F2596705900528953 /* DataManager.swift in Sources */,
 				041DC5A4258687C300F60F21 /* APIManager.swift in Sources */,
 				0423155525B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld in Sources */,
+				04A3F75025B60DF400B243E3 /* User+CoreDataClass.swift in Sources */,
 				04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */,
-				04F35A1B25AB74000097446B /* Trip+CoreDataClass.swift in Sources */,
 				04DCCF5A25A8E70600BEB9EB /* PointViewController.swift in Sources */,
-				04F35A1A25AB74000097446B /* Trip+CoreDataProperties.swift in Sources */,
 				04DCCF4F25A8CC1D00BEB9EB /* UserModel.swift in Sources */,
 				04DBC772259145EF008A7311 /* CoreDataManager.swift in Sources */,
-				04E776102598F95400A1EAF6 /* User+CoreDataProperties.swift in Sources */,
 				04DCCF4725A8BFAE00BEB9EB /* LocationService.swift in Sources */,
 				04E776002597D5DB00A1EAF6 /* addITCell.swift in Sources */,
 				04161D1A25A10D4800299B89 /* OdomoeterViewController.swift in Sources */,
@@ -375,9 +379,14 @@
 				04DCCF4025A8BF7D00BEB9EB /* APIGeocodingManager.swift in Sources */,
 				0464E96825800E2500802005 /* AppDelegate.swift in Sources */,
 				04DCCF4B25A8C99E00BEB9EB /* Address.swift in Sources */,
+				04A3F75825B774A300B243E3 /* Point+CoreDataClass.swift in Sources */,
 				046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */,
 				0423154025B0E4DA00D7D477 /* TripModel.swift in Sources */,
+				04A3F75925B774A300B243E3 /* Point+CoreDataProperties.swift in Sources */,
+				04A3F75E25B780E800B243E3 /* Trip+CoreDataClass.swift in Sources */,
+				04A3F75125B60DF400B243E3 /* User+CoreDataProperties.swift in Sources */,
 				0464E96A25800E2500802005 /* SceneDelegate.swift in Sources */,
+				04A3F75F25B780E800B243E3 /* Trip+CoreDataProperties.swift in Sources */,
 				04E2A87A25990A1400FE2784 /* CoreDataStack.swift in Sources */,
 				040E53C3258F6EC80046B64E /* UserSettings.swift in Sources */,
 				04E775FD2597D3C800A1EAF6 /* DescVC.swift in Sources */,
@@ -591,10 +600,11 @@
 		0423155325B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				04709BC125B4C16E0083CB86 /* MyFondTransportnie 3.xcdatamodel */,
 				0423155725B32AAD00D7D477 /* MyFondTransportnie 2.xcdatamodel */,
 				0423155425B32A5400D7D477 /* MyFondTransportnie.xcdatamodel */,
 			);
-			currentVersion = 0423155725B32AAD00D7D477 /* MyFondTransportnie 2.xcdatamodel */;
+			currentVersion = 04709BC125B4C16E0083CB86 /* MyFondTransportnie 3.xcdatamodel */;
 			path = MyFondTransportnie.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

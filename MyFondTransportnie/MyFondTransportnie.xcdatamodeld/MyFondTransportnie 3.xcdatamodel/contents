@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Point" representedClassName="Point" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="no" optional="YES" attributeType="String"/>
+        <attribute name="sity" optional="YES" attributeType="String"/>
+        <attribute name="street" optional="YES" attributeType="String"/>
+        <attribute name="target_de" optional="YES" attributeType="String"/>
+        <attribute name="target_ru" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="point" inverseEntity="Trip"/>
+    </entity>
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="cost" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="direct_img" optional="YES" attributeType="String"/>
+        <attribute name="fuel" optional="YES" attributeType="String"/>
+        <attribute name="fuel_capacity" optional="YES" attributeType="String"/>
+        <attribute name="gas" optional="YES" attributeType="String"/>
+        <attribute name="gas_capacity" optional="YES" attributeType="String"/>
+        <attribute name="gas_cost" optional="YES" attributeType="String"/>
+        <attribute name="gasoline" optional="YES" attributeType="String"/>
+        <attribute name="gasoline_capacity" optional="YES" attributeType="String"/>
+        <attribute name="gasoline_cost" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="odometer_end" optional="YES" attributeType="String"/>
+        <attribute name="odometer_end_img" optional="YES" attributeType="String"/>
+        <attribute name="odometer_end_img_url" optional="YES" attributeType="String"/>
+        <attribute name="odometer_start" optional="YES" attributeType="String"/>
+        <attribute name="odometer_start_img" optional="YES" attributeType="String"/>
+        <attribute name="odometer_start_img_url" optional="YES" attributeType="String"/>
+        <attribute name="persons" optional="YES" attributeType="String"/>
+        <attribute name="point_obj" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName"/>
+        <attribute name="refull" optional="YES" attributeType="String"/>
+        <attribute name="routs" optional="YES" attributeType="String"/>
+        <attribute name="start_point" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="trip_name" optional="YES" attributeType="String"/>
+        <relationship name="point" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Point" inverseName="trip" inverseEntity="Point"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="abbrev" optional="YES" attributeType="String"/>
+        <attribute name="active" optional="YES" attributeType="String"/>
+        <attribute name="name_en" optional="YES" attributeType="String"/>
+        <attribute name="name_ru" optional="YES" attributeType="String"/>
+        <attribute name="surname_en" optional="YES" attributeType="String"/>
+        <attribute name="surname_ru" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Point" positionX="-54" positionY="225" width="128" height="163"/>
+        <element name="Trip" positionX="239.26953125" positionY="-79.8828125" width="128" height="433"/>
+        <element name="User" positionX="-341.84375" positionY="109.66796875" width="128" height="148"/>
+    </elements>
+</model>

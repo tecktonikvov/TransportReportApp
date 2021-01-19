@@ -1,5 +1,5 @@
 //
-//  Trip+CoreDataClass.swift
+//  Point+CoreDataClass.swift
 //  
 //
 //  Created by Mac on 19.01.2021.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(Trip)
-public class Trip: NSManagedObject {
+@objc(Point)
+public class Point: NSManagedObject {
 
 }

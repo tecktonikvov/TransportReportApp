@@ -9,7 +9,7 @@ import UIKit
 
 class DescVC: UIViewController {
     
-    var newTrip: TripModel?
+    //var newTrip: TripModel?
     var currentTrip: Trip?
     var users: [String]?
     
@@ -53,7 +53,10 @@ class DescVC: UIViewController {
         addTables.forEach {$0.backgroundColor = .white}
         
         currentTrip = (self.tabBarController as! TabBarController).currentTrip
-        
+//        
+//        if let points = currentTrip?.point {
+//            print(points)
+//        }
         if currentTrip != nil {
             findPersons()
         }
