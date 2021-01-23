@@ -16,8 +16,6 @@ class PointViewController: UIViewController {
     var indexOfParkingCell: Int?
     
     @IBOutlet var textFields: [UITextField]!
-    @IBAction func addButtonPressed(_ sender: UIButton) {
-    }
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,22 +33,22 @@ class PointViewController: UIViewController {
         tableView.dragDelegate = self
         tableView.dropDelegate = self
         tableView.backgroundColor = .white
-        
-        tableView.rowHeight = UITableView.automaticDimension
+        view.backgroundColor = .white
+        registerForKeyboardNotification()
+    }
+    
+//    deinit {
+//        removeKeyboardNotifications()
+//    }
 
-    }
-    
-    @objc func editButtonPressed(){
-        tableView.isEditing = !tableView.isEditing
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let buttonEdit = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonPressed))
-        self.tabBarController?.navigationItem.rightBarButtonItems = [buttonEdit]
-    }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
+        removeKeyboardNotifications()
+    }
+    
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        let newPoint = DataManager.createNewEntity(entityName: "Point") as? Point
     }
     
     private func updateIndexes(){
@@ -60,22 +58,28 @@ class PointViewController: UIViewController {
             i += 1
         }
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
+//MARK: - Keyboard show/hide
     func registerForKeyboardNotification(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillShow() {
-        
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+    //Get kb frame size value
+        let kbSize = ((userInfo?[UIResponder.keyboardFrameEndUserInfoKey])! as! NSValue).cgRectValue
+    //Get tabBar frame size value
+        let tabBarSize = self.tabBarController?.tabBar.frame.size
+        self.view.frame.origin.y -= kbSize.height - tabBarSize!.height
     }
     
     @objc func keyboardWillHide() {
-        
+        self.view.frame.origin.y = 0
     }
 }
 
@@ -123,15 +127,15 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
     }
 
 //MARK: - Override to support rearranging the table view.
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {return true}
+    
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let elementToMove = currentPoints![fromIndexPath.row]
         currentPoints!.remove(at: fromIndexPath.row)
         currentPoints!.insert(elementToMove, at: to.row)
         updateIndexes()
     }
-    
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {return true}
-    
+        
 //MARK: - Swipe to delete
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {return true}
     
@@ -152,7 +156,6 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
            if session.localDragSession != nil {
                return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
            }
-
            return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
        }
 

@@ -7,7 +7,6 @@
 
 import UIKit
 import Photos
-import Kingfisher
 
 class OdomoeterViewController: UIViewController {
     
@@ -16,7 +15,7 @@ class OdomoeterViewController: UIViewController {
         didSet{
            //If isEditing Trip
             if currentTrip?.id != nil {
-                downloadOdometerImages() //Get image from server
+                KingFisher.downloadOdometerImages(currentTrip: currentTrip!, startImageView: startImage, finishImageView: finishImage) //Get image from server
                 insertData() //Fill fields
             }
         }
@@ -58,44 +57,6 @@ class OdomoeterViewController: UIViewController {
             tabBar!.newTrip!.odometer_end = endKmTf.text!
             print(tabBar!.newTrip)
         }
-    }
-
-    func downloadOdometerImages(){
-        let startUrlString = currentTrip?.odometer_start_img_url
-        let endUrlString = currentTrip?.odometer_end_img_url
-        
-    //Create processor for "start" task
-        var processor = DownsamplingImageProcessor(size: startImage.bounds.size)
-            |> RoundCornerImageProcessor(cornerRadius: 20)
-        startImage.kf.indicatorType = .activity
-
-    //Download image and cache for start textField
-        if startUrlString != "" {
-            let startUrl = URL(string: startUrlString!)
-            DispatchQueue.main.async {
-                self.startImage.kf.setImage(with: startUrl,options: [.processor(processor),
-                                                                .scaleFactor(UIScreen.main.scale),
-                                                                .transition(.fade(1)),
-                                                                .cacheOriginalImage
-                                                                ])
-                }
-            
-        } else { print("[!]Trip id: \(String(describing: currentTrip?.id)) has no start image urlSring") }
-        
-    //Create processor for "finish" task
-        processor = DownsamplingImageProcessor(size: finishImage.bounds.size)
-            |> RoundCornerImageProcessor(cornerRadius: 20)
-        finishImage.kf.indicatorType = .activity
-
-    //Download image and cache for finish textField
-        if endUrlString != "" {
-            let endUrl = URL(string: endUrlString!)
-            finishImage.kf.setImage(with: endUrl, options: [.processor(processor),
-                                                            .scaleFactor(UIScreen.main.scale),
-                                                            .transition(.fade(1)),
-                                                            .cacheOriginalImage
-                                                            ])
-        } else { print("[!]Trip id: \(String(describing: currentTrip?.id)) has no finish image urlSring") }
     }
     
     @IBAction func addStartImageAction(_ sender: UIButton) {

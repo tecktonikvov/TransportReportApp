@@ -21,6 +21,7 @@
 		0464E97425800E2900802005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97325800E2900802005 /* Assets.xcassets */; };
 		0464E97725800E2900802005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0464E97525800E2900802005 /* LaunchScreen.storyboard */; };
 		046C2A3825966AC500F9048D /* GusAndAlertsFourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */; };
+		047C9D7825BC5FC000DFE904 /* KingFisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C9D7725BC5FC000DFE904 /* KingFisher.swift */; };
 		04A3F75025B60DF400B243E3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F74B25B60DF400B243E3 /* User+CoreDataClass.swift */; };
 		04A3F75125B60DF400B243E3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F74725B60DF400B243E3 /* User+CoreDataProperties.swift */; };
 		04A3F76725B8B07300B243E3 /* Point+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A3F76625B8B07300B243E3 /* Point+CoreDataClass.swift */; };
@@ -62,6 +63,7 @@
 		0464E97825800E2900802005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		046C2A3725966AC500F9048D /* GusAndAlertsFourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GusAndAlertsFourViewController.swift; sourceTree = "<group>"; };
 		04709BC125B4C16E0083CB86 /* MyFondTransportnie 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyFondTransportnie 3.xcdatamodel"; sourceTree = "<group>"; };
+		047C9D7725BC5FC000DFE904 /* KingFisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisher.swift; sourceTree = "<group>"; };
 		04A3F74725B60DF400B243E3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		04A3F74B25B60DF400B243E3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/User+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		04A3F76325B8B07200B243E3 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Trip+CoreDataProperties.swift"; path = "/Users/mac/Desktop/Development/MyFondTransportnie/MyFondTransportnie/Models/Trip+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				04DCCF4625A8BFAE00BEB9EB /* LocationService.swift */,
+				047C9D7725BC5FC000DFE904 /* KingFisher.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				0431A84F2596705900528953 /* DataManager.swift in Sources */,
 				041DC5A4258687C300F60F21 /* APIManager.swift in Sources */,
 				0423155525B32A5400D7D477 /* MyFondTransportnie.xcdatamodeld in Sources */,
+				047C9D7825BC5FC000DFE904 /* KingFisher.swift in Sources */,
 				04A3F76825B8B07300B243E3 /* Point+CoreDataProperties.swift in Sources */,
 				04A3F75025B60DF400B243E3 /* User+CoreDataClass.swift in Sources */,
 				04F1748B2582B9920064575F /* TripTableViewCell.swift in Sources */,

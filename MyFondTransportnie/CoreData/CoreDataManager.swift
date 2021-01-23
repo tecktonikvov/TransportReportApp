@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class CoreDataManager {
+struct CoreDataManager {
     static let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
     
     private func createUserEntityFrom(dictionary: [String:AnyObject]) -> NSManagedObject? {

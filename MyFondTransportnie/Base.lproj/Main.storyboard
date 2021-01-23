@@ -186,7 +186,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJb-0b-Wtc">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="38"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="32"/>
                                             <color key="backgroundColor" red="1" green="0.5828639269" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -199,7 +199,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="RJb-0b-Wtc" firstAttribute="top" secondItem="Yt0-uw-oHZ" secondAttribute="top" id="2PW-CV-fdA"/>
-                                        <constraint firstAttribute="bottom" secondItem="RJb-0b-Wtc" secondAttribute="bottom" id="aHz-xq-2iD"/>
+                                        <constraint firstAttribute="bottom" secondItem="RJb-0b-Wtc" secondAttribute="bottom" constant="6" id="aHz-xq-2iD"/>
                                         <constraint firstItem="RJb-0b-Wtc" firstAttribute="centerX" secondItem="Yt0-uw-oHZ" secondAttribute="centerX" id="b3O-8F-xin"/>
                                         <constraint firstItem="RJb-0b-Wtc" firstAttribute="leading" secondItem="Yt0-uw-oHZ" secondAttribute="leading" constant="16" id="pYN-BL-l4l"/>
                                     </constraints>

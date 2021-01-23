@@ -9,30 +9,30 @@ import Foundation
 import UIKit
 import CoreData
 
-class DataManager {
-    static var vc: ViewController!
+struct DataManager {
+    static var mainVC: ViewController!
     
-    class func authFromAPI(login: String, pass: String){
-        if UserSettings.userModel?.userName == nil { // логика созданию юсер моделс? ошибка авторизации
+    static func authFromAPI(login: String, pass: String){
+        if UserSettings.userModel?.userName == nil {
             APIManager.authorize(login: login, pass: pass, completion: { result, error  in
                 
                 if let errors = error {
-                    vc.showCustomAlert(title: "Ну ничего, страшного", message: errors.localizedDescription)
-                    vc.setState(state: .fatalError(error!.localizedDescription))
+                    mainVC.showCustomAlert(title: "Ну ничего, страшного", message: errors.localizedDescription)
+                    mainVC.setState(state: .fatalError(error!.localizedDescription))
                     return
                 }
                 
                 switch result {
                 case "OK":
                     let user = UserModel(userName: login)
-                    UserSettings.userModel = user // Просто присваиваем обьект и он сохранится
-                    vc.setState(state: .fetchengData)
+                    UserSettings.userModel = user // This like we savthe object
+                    mainVC.setState(state: .fetchengData)
                     
                 case "incorrectUserAuthData":
-                    vc.showAthorizeAlert(somethingIncorrect: true)
+                    mainVC.showAthorizeAlert(somethingIncorrect: true)
                     
                 default:
-                    vc.setState(state: .fatalError(result ?? "Неизвестный ответ сервера"))
+                    mainVC.setState(state: .fatalError(result ?? "Неизвестный ответ сервера"))
                 }
             })
         } else {
@@ -40,75 +40,90 @@ class DataManager {
         }
     }
     
-    class func getTrips(){
+    static func getTrips(){
         APIManager.fetchTrips(completion: { result in
-            switch result{//тут получили результат из APIManager
+            switch result{
             case .Success(let trips):
                 
                 if trips.count != 0 {
                     saveEntityToCoreData(entityName: "Trip", dictionary: trips)
                     getTripsFromCoreData()
-                    vc.setState(state: .normal)
+                    mainVC.setState(state: .normal)
                     
                 } else {
                     getTripsFromCoreData()
-                    vc.setState(state: .autonomicMode)
+                    mainVC.setState(state: .autonomicMode)
                     print("[!]DataManager: Warning: API send 0 trips!")
                 }
                 
             case .Error(let error):
                 //print(error)
                 getTripsFromCoreData()
-                vc.setState(state: .autonomicMode)
+                mainVC.setState(state: .autonomicMode)
                 return
             }
         })
     }
     
-    class func fetchUsersFromAPI(){
+    static func fetchUsersFromAPI(){
         APIManager.fetchUsers(completion: { result, error  in
             switch result{//тут полчили результат из APIManager
             case .Success(let users):
                 saveEntityToCoreData(entityName: "User", dictionary: users)
-                vc.setState(state: .normal)
+                mainVC.setState(state: .normal)
 
             case .Error(let error):
                 //print(error)
-                vc.setState(state: .autonomicMode)
+                mainVC.setState(state: .autonomicMode)
                 //vc.setState(state: .fatalError("Не возможно получить юсеров из API"))
                 return
             }
         })
     }
     
-    class func getNewEntity(entityName: String) -> Trip {
+    static func getNewEntity(entityName: String) -> Trip {
         let CDM = CoreDataManager()
         return CDM.createNewEntity(entity: "Trip") as! Trip
     }
     
-    class func getTripsFromCoreData(){
+    static func createNewEntity(entityName: String) -> NSManagedObject? {
+        let CDM = CoreDataManager()
+        switch entityName{
+        case "Trip":
+            return CDM.createNewEntity(entity: "Trip") as! Trip
+            
+        case "Point":
+            return CDM.createNewEntity(entity: "Point") as! Point
+            
+        default:
+            return nil
+        }
+        //return CDM.createNewEntity(entity: "Trip") as! Trip
+    }
+    
+    static func getTripsFromCoreData(){
         let CDM = CoreDataManager()
         let result = CDM.getTrips()
         
         if result.isEmpty {
             print("[!]DataManager: Can`t get Trips from CoreData, result is empty")
-            vc.state = .fatalError("Не возможно получить поездки из CoreData")
+            mainVC.state = .fatalError("Не возможно получить поездки из CoreData")
         }
-        vc.trips = result
+        mainVC.trips = result
     }
     
-    class func getUsersFromCoreData() -> [User]{
+    static func getUsersFromCoreData() -> [User]{
         let CDM = CoreDataManager()
         let result = CDM.getUsers()
         
         if result.isEmpty {
             print("[!]DataManager: Can`t get Users from CoreData, result is empty")
-            vc.state = .fatalError("Невозможно получить пользователей из CoreData")
+            mainVC.state = .fatalError("Невозможно получить пользователей из CoreData")
         }
         return result
     }
     
-    class func saveEntityToCoreData(entityName: String, dictionary: [[String: AnyObject]]){
+    static func saveEntityToCoreData(entityName: String, dictionary: [[String: AnyObject]]){
         let CDM = CoreDataManager()
         
         switch entityName {
@@ -131,7 +146,7 @@ class DataManager {
         }
     }
 
-    class func getUsersStringArrray(byProf: String) -> [String]{
+    static func getUsersStringArrray(byProf: String) -> [String]{
         let profType = byProf
         let CDM = CoreDataManager()
         let users = CDM.getUsers()
@@ -145,7 +160,7 @@ class DataManager {
         return usersArr
     }
     
-    class func getAddresFromGeoAPI(){
+    static func getAddresFromGeoAPI(){
         APIGeocodingManager.fetchTrips(completion: { result in
             switch result{
             case .Success(let json):

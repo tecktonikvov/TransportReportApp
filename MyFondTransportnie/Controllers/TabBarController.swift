@@ -16,8 +16,8 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if currentTrip == nil {
-            newTrip = Trip(context: CoreDataManager.context)
-            //newTrip = DataManager.getNewEntity(entityName: "Trip")
+            //newTrip = Trip(context: CoreDataManager.context)
+            newTrip = DataManager.createNewEntity(entityName: "Trip") as? Trip
         }
     }
     

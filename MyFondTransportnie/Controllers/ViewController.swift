@@ -42,7 +42,7 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DataManager.vc = self
+        DataManager.mainVC = self
         setState(state: .nonAuthorise)
         //CoreDataStack.sharedInstance.applicationDocumentsDirectory() // выводит в консоль директорию CoreData
 
