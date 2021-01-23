@@ -31,7 +31,7 @@ struct CoreDataManager {
         var i = 0
         for point in dict {
             let pointEntity = Point(context: CoreDataManager.context) //Создаем сущность засовуем в контекст
-            pointEntity.sity = point["sity"] as? String
+            pointEntity.city = point["sity"] as? String
             pointEntity.type = point["type"] as? String
             pointEntity.street = point["street"] as? String
             pointEntity.no = point["no"] as? String
@@ -74,6 +74,8 @@ struct CoreDataManager {
             if let pointsArr = dictionary["points"] as? NSArray {
                 let pointsEntity =  createPointEntityFrom(dictionary: pointsArr, tripEntity: entity)
                 entity.point = NSSet.init(array: pointsEntity)
+                //entity.point =
+
             }
             
             entity.odometer_start_img_url = dictionary["odometer_start_img_url"] as? String
@@ -88,8 +90,8 @@ struct CoreDataManager {
         case "Trip":
             return (NSEntityDescription.insertNewObject(forEntityName: "Trip", into: CoreDataManager.context) as? Trip)
 
-        case "User":
-            return (NSEntityDescription.insertNewObject(forEntityName: "User", into: CoreDataManager.context) as? User)
+        case "Point":
+            return (NSEntityDescription.insertNewObject(forEntityName: "Point", into: CoreDataManager.context) as? Point)
 
         default:
             return nil

@@ -9,7 +9,7 @@ import UIKit
 
 class PointViewCell: UITableViewCell {
 
-    @IBOutlet weak var cityTF: UITextField!
+    @IBOutlet weak var sityTF: UITextField!
     
     @IBOutlet weak var targetRuHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var numberTF: UITextField!
@@ -30,7 +30,7 @@ class PointViewCell: UITableViewCell {
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         streetTF.attributedPlaceholder = NSAttributedString(string: "Улица",
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        cityTF.attributedPlaceholder = NSAttributedString(string: "Город",
+        sityTF.attributedPlaceholder = NSAttributedString(string: "Город",
                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
 

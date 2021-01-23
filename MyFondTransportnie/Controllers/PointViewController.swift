@@ -9,20 +9,18 @@ import UIKit
 
 class PointViewController: UIViewController {
 
-    
-
     var currentTrip: Trip?
     var currentPoints: [Point]?
     var indexOfParkingCell: Int?
     
-    @IBOutlet var textFields: [UITextField]!
+    @IBOutlet var addButtonCollection: [UIButton]!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView?.backgroundColor = .white
-        addButton.layer.cornerRadius = 6
+        addButtonCollection.forEach({$0.layer.cornerRadius = 6}) 
 
         currentTrip = (self.tabBarController as! TabBarController).currentTrip
         currentPoints = currentTrip?.point?.allObjects as? [Point]
@@ -37,24 +35,65 @@ class PointViewController: UIViewController {
         registerForKeyboardNotification()
     }
     
-//    deinit {
-//        removeKeyboardNotifications()
-//    }
-
-    
     override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+        //self.tabBarController?.navigationItem.rightBarButtonItem = nil
         removeKeyboardNotifications()
+        saveUserInputWhenSwitchTabBarController()
     }
     
+ //MARK: - Add points actions
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        let newPoint = DataManager.createNewEntity(entityName: "Point") as? Point
+        guard let newPoint = DataManager.createNewEntity(entityName: "Point") as? Point else { return }
+        newPoint.type = "point"
+        currentPoints?.append(newPoint)
+        updateSortIndexesForCurrentPoints()
+        tableView.reloadData()
     }
     
-    private func updateIndexes(){
+    @IBAction func addParkingButtonPressed(_ sender: UIButton) {
+        guard let newPoint = DataManager.createNewEntity(entityName: "Point") as? Point else { return }
+        newPoint.type = "parking"
+        newPoint.city = "Николаев / Nikolaev"
+        newPoint.street = "Чкалова / Chkalova"
+        newPoint.no = "25a"
+        currentPoints?.append(newPoint)
+        updateSortIndexesForCurrentPoints()
+        tableView.reloadData()
+    }
+    
+    @IBAction func addFondButtonPressed(_ sender: UIButton) {
+        guard let newPoint = DataManager.createNewEntity(entityName: "Point") as? Point else { return }
+        newPoint.type = "fond"
+        newPoint.city = "Николаев / Nikolaev"
+        newPoint.street = "Соборная / Sobornaya"
+        newPoint.no = "12б"
+        currentPoints?.append(newPoint)
+        updateSortIndexesForCurrentPoints()
+        tableView.reloadData()
+    }
+    
+//MARK: - Private functions
+    private func saveUserInputWhenSwitchTabBarController(){
+        for cell in tableView.visibleCells{
+            let pointcell = cell as! PointViewCell
+            currentPoints![cell.tag].city = pointcell.sityTF.text
+            currentPoints![cell.tag].street = pointcell.streetTF.text
+            currentPoints![cell.tag].no = pointcell.numberTF.text
+            currentPoints![cell.tag].target_de = pointcell.targetDeTF.text
+            currentPoints![cell.tag].target_ru = pointcell.targetRuTF.text
+        }
+        //updateSortIndexesForCurrentPoints()
+        print(currentPoints)
+        (self.tabBarController as! TabBarController).newPointList = currentPoints
+    }
+    
+    private func updateSortIndexesForCurrentPoints(){
         var i: Int16 = 0
-        for point in currentPoints! {
+        for point in currentPoints! { 
             point.sort_number = i
+            print("++++++++++")
+            print(point.street!+String(point.sort_number))
+
             i += 1
         }
     }
@@ -70,18 +109,22 @@ class PointViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        let userInfo = notification.userInfo
-    //Get kb frame size value
-        let kbSize = ((userInfo?[UIResponder.keyboardFrameEndUserInfoKey])! as! NSValue).cgRectValue
-    //Get tabBar frame size value
-        let tabBarSize = self.tabBarController?.tabBar.frame.size
-        self.view.frame.origin.y -= kbSize.height - tabBarSize!.height
+      //If content is not was moved then move view frame to keyboard height
+        if self.view.frame.origin.y == 0{
+            let userInfo = notification.userInfo
+        //Get kb frame size value
+            let kbSize = ((userInfo?[UIResponder.keyboardFrameEndUserInfoKey])! as! NSValue).cgRectValue
+        //Get tabBar frame size value
+            let tabBarSize = self.tabBarController?.tabBar.frame.size
+            self.view.frame.origin.y -= kbSize.height - tabBarSize!.height
+        }
     }
     
     @objc func keyboardWillHide() {
         self.view.frame.origin.y = 0
     }
 }
+
 
 //MARK: - Extensions
 extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate, UITableViewDropDelegate, UITextViewDelegate, UITextFieldDelegate {
@@ -91,7 +134,14 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pointCell") as! PointViewCell
-      // We don`t need some fields if point is "parking". We will fill them in as default
+        cell.tag = indexPath.row
+        
+        cell.targetRuHeightConstraint.constant = 50
+        cell.targetDeHeightConstraint.constant = 50
+        cell.targetRuTF.isHidden = false
+        cell.targetDeTF.isHidden = false
+        
+    // We don`t need some fields if point is "parking". We will fill them in as default
         if currentPoints![indexPath.row].type == "parking" {
             cell.targetRuTF.isHidden = true
             cell.targetDeTF.isHidden = true
@@ -106,7 +156,7 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
         cell.targetRuTF.text = "Цель поездки RU"
         cell.targetRuTF.textColor = .lightGray
         
-        cell.cityTF.text = currentPoints![indexPath.row].sity
+        cell.sityTF.text = currentPoints![indexPath.row].city
         cell.streetTF.text = currentPoints![indexPath.row].street
         cell.numberTF.text = currentPoints![indexPath.row].no
         
@@ -119,7 +169,7 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
             cell.targetRuTF.textColor = .black
         }
            
-        cell.cityTF.textColor = .black
+        cell.sityTF.textColor = .black
         cell.streetTF.textColor = .black
         cell.numberTF.textColor = .black
         
@@ -133,7 +183,7 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
         let elementToMove = currentPoints![fromIndexPath.row]
         currentPoints!.remove(at: fromIndexPath.row)
         currentPoints!.insert(elementToMove, at: to.row)
-        updateIndexes()
+        updateSortIndexesForCurrentPoints()
     }
         
 //MARK: - Swipe to delete
@@ -142,7 +192,7 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             currentPoints?.remove(at: indexPath.row)
-            updateIndexes()
+            updateSortIndexesForCurrentPoints()
             tableView.reloadData()
         }
     }
@@ -171,15 +221,20 @@ extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITab
         }
     }
     
+//This solution solves the problem of displaying placeholder in UITextView
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            if textView.tag == 1 {
-                textView.text = "Цель поездки RU"
-            } else {
-                textView.text = "Цель поездки DE"
-            }
-            textView.textColor = UIColor.lightGray
-        }
+//        if textView.text.isEmpty {
+//            if textView.tag == 1 {
+//                textView.text = "Цель поездки RU"
+//            } else {
+//                textView.text = "Цель поездки DE"
+//            }
+//            textView.textColor = UIColor.lightGray
+//        }
+        
+//Update currentTrip from user inputValues
+        //currentTrip[]
+//Get the indexpath of the cell in which the textfield is located
     }
     
   // Dissmiss keyboard on "Done" button prssed

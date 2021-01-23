@@ -27,8 +27,6 @@ struct KingFisher {
                                                                 .transition(.fade(1)),
                                                                 .cacheOriginalImage
                                                                 ])
-                
-            
         } else { print("[!]KingFisher - Trip id: \(String(describing: currentTrip.id)) has no start image urlSring") }
         
     //Create processor for "finish" task

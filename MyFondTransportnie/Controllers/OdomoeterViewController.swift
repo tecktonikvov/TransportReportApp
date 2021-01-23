@@ -41,6 +41,10 @@ class OdomoeterViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        saveUserInputWhenSwitchTabBatController()
+    }
+    
+    private func saveUserInputWhenSwitchTabBatController(){
         datePicker.datePickerMode = UIDatePicker.Mode.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
