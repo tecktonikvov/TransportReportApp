@@ -28,7 +28,7 @@ class CoreDataManager {
     private func createPointEntityFrom(dictionary: NSArray, tripEntity: Trip) -> [Any] {
         let dict = dictionary as Array
         var resultArr = [Any]()
-
+        var i = 0
         for point in dict {
             let pointEntity = Point(context: CoreDataManager.context) //Создаем сущность засовуем в контекст
             pointEntity.sity = point["sity"] as? String
@@ -38,7 +38,9 @@ class CoreDataManager {
             pointEntity.target_ru = point["target_ru"] as? String
             pointEntity.target_de = point["target_de"] as? String
             pointEntity.distance = point["distance"] as? Double ?? 0.0
+            pointEntity.sort_number = Int16(i)
             resultArr.append(pointEntity)
+            i += 1
         }
         return resultArr
     }

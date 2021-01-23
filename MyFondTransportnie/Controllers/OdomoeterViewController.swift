@@ -14,23 +14,14 @@ class OdomoeterViewController: UIViewController {
     var tabBar: TabBarController!
     var currentTrip: Trip?{
         didSet{
+           //If isEditing Trip
             if currentTrip?.id != nil {
-                setOdometerImage()
-                insertData()
+                downloadOdometerImages() //Get image from server
+                insertData() //Fill fields
             }
         }
     }
-    
-    @IBOutlet weak var startImage: UIImageView!
-    @IBOutlet weak var finishImage: UIImageView!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var endKmTf: UITextField!
-    @IBOutlet weak var startKmTf: UITextField!
-    @IBOutlet var probegTfCollection: [UITextField]!
-    @IBOutlet var addPhotoBttn: [UIButton]!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
-    
+
     var pickStartImageBegin = false
     var pickEndImageBegin = false
 
@@ -39,16 +30,18 @@ class OdomoeterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar = (self.tabBarController as! TabBarController)
+        
         endKmTf.delegate = self
         startKmTf.delegate = self
+        
         currentTrip = tabBar!.currentTrip
         setupController()
         addDoneButtonOnKeyboard()
+        
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        tabBar!.newTrip!.odometer_start = startKmTf.text!
-        tabBar!.newTrip!.odometer_end = endKmTf.text!
         datePicker.datePickerMode = UIDatePicker.Mode.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -57,19 +50,26 @@ class OdomoeterViewController: UIViewController {
         dateFormatter.dateFormat = "HH:mm"
         let selectedTime = dateFormatter.string(from: datePicker.date)
         
-        tabBar!.newTrip!.date = selectedDate
-        tabBar!.newTrip!.time = selectedTime
-        print(tabBar!.newTrip)
+      //When we go away from this controller we must update Trip model which locate in TabBarController
+        if currentTrip == nil {
+            tabBar!.newTrip!.date = selectedDate
+            tabBar!.newTrip!.time = selectedTime
+            tabBar!.newTrip!.odometer_start = startKmTf.text!
+            tabBar!.newTrip!.odometer_end = endKmTf.text!
+            print(tabBar!.newTrip)
+        }
     }
 
-    func setOdometerImage(){
+    func downloadOdometerImages(){
         let startUrlString = currentTrip?.odometer_start_img_url
         let endUrlString = currentTrip?.odometer_end_img_url
-                
-        let processor = DownsamplingImageProcessor(size: startImage.bounds.size)
+        
+    //Create processor for "start" task
+        var processor = DownsamplingImageProcessor(size: startImage.bounds.size)
             |> RoundCornerImageProcessor(cornerRadius: 20)
         startImage.kf.indicatorType = .activity
-        
+
+    //Download image and cache for start textField
         if startUrlString != "" {
             let startUrl = URL(string: startUrlString!)
             DispatchQueue.main.async {
@@ -82,6 +82,12 @@ class OdomoeterViewController: UIViewController {
             
         } else { print("[!]Trip id: \(String(describing: currentTrip?.id)) has no start image urlSring") }
         
+    //Create processor for "finish" task
+        processor = DownsamplingImageProcessor(size: finishImage.bounds.size)
+            |> RoundCornerImageProcessor(cornerRadius: 20)
+        finishImage.kf.indicatorType = .activity
+
+    //Download image and cache for finish textField
         if endUrlString != "" {
             let endUrl = URL(string: endUrlString!)
             finishImage.kf.setImage(with: endUrl, options: [.processor(processor),
@@ -95,13 +101,13 @@ class OdomoeterViewController: UIViewController {
     @IBAction func addStartImageAction(_ sender: UIButton) {
         pickStartImageBegin = true
         pickEndImageBegin = false
-        showActionSheet()
+        choiseImageSource()
     }
     
     @IBAction func addEndImageAction(_ sender: UIButton) {
         pickStartImageBegin = false
         pickEndImageBegin = true
-        showActionSheet()
+        choiseImageSource()
     }
     
     @IBAction func tapAnyWhere(_ sender: Any) {
@@ -121,7 +127,7 @@ class OdomoeterViewController: UIViewController {
                         $0?.backgroundColor = #colorLiteral(red: 0.9202490482, green: 0.9202490482, blue: 0.9202490482, alpha: 1)
                         $0?.layer.cornerRadius = 12
         }
-        
+    //This is need in order to hide the error.
         datePicker.setValue(UIColor.black, forKeyPath: "textColor")
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
@@ -153,6 +159,7 @@ class OdomoeterViewController: UIViewController {
         datePicker.setDate(date, animated: true)
     }
     
+//Add to number keyboard "Done" button
     func addDoneButtonOnKeyboard(){
             let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
             doneToolbar.barStyle = .default
@@ -167,15 +174,28 @@ class OdomoeterViewController: UIViewController {
             endKmTf.inputAccessoryView = doneToolbar
             startKmTf.inputAccessoryView = doneToolbar
         }
-
+//Dissmiss keyboard when "Done" button pressed
         @objc func doneButtonAction(){
             startKmTf.resignFirstResponder()
             endKmTf.resignFirstResponder()
         }
+    
+    //MARK: - Outlets
+        @IBOutlet weak var startImage: UIImageView!
+        @IBOutlet weak var finishImage: UIImageView!
+        @IBOutlet weak var datePicker: UIDatePicker!
+        @IBOutlet weak var endKmTf: UITextField!
+        @IBOutlet weak var startKmTf: UITextField!
+        @IBOutlet var probegTfCollection: [UITextField]!
+        @IBOutlet var addPhotoBttn: [UIButton]!
+        @IBOutlet weak var scrollView: UIScrollView!
+        @IBOutlet weak var contentView: UIView!
 }
 
+//MARK: - Extensions
 extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
+//MARK: - ImagePickerController Delegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         
         let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
@@ -188,12 +208,12 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func showActionSheet(){
+//
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+//        picker.dismiss(animated: true, completion: nil)
+//    }
+  
+    func choiseImageSource(){
         let galleryIcon = #imageLiteral(resourceName: "gallery")
         let cameraIcon = #imageLiteral(resourceName: "camera")
         
@@ -222,6 +242,7 @@ extension OdomoeterViewController: UIImagePickerControllerDelegate, UINavigation
         self.present(myActionSheet, animated: true, completion: nil)
     }
     
+//MARK: - TextField Delagate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

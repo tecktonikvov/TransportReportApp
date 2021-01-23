@@ -9,10 +9,13 @@ import UIKit
 
 class PointViewController: UIViewController {
 
+    
+
     var currentTrip: Trip?
+    var currentPoints: [Point]?
+    var indexOfParkingCell: Int?
     
     @IBOutlet var textFields: [UITextField]!
-    
     @IBAction func addButtonPressed(_ sender: UIButton) {
     }
     @IBOutlet weak var addButton: UIButton!
@@ -22,30 +25,172 @@ class PointViewController: UIViewController {
         super.viewDidLoad()
         tableView.tableFooterView?.backgroundColor = .white
         addButton.layer.cornerRadius = 6
-        tableView.backgroundColor = .white
+
         currentTrip = (self.tabBarController as! TabBarController).currentTrip
+        currentPoints = currentTrip?.point?.allObjects as? [Point]
+        
+        currentPoints?.sort(by: { $0.sort_number < $1.sort_number })
+        
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+        tableView.backgroundColor = .white
+        
+        tableView.rowHeight = UITableView.automaticDimension
+
+    }
+    
+    @objc func editButtonPressed(){
+        tableView.isEditing = !tableView.isEditing
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let buttonEdit = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonPressed))
+        self.tabBarController?.navigationItem.rightBarButtonItems = [buttonEdit]
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
+    
+    private func updateIndexes(){
+        var i: Int16 = 0
+        for point in currentPoints! {
+            point.sort_number = i
+            i += 1
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    func registerForKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow() {
+        
+    }
+    
+    @objc func keyboardWillHide() {
         
     }
 }
 
-extension PointViewController: UITableViewDelegate, UITableViewDataSource {
+//MARK: - Extensions
+extension PointViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDragDelegate, UITableViewDropDelegate, UITextViewDelegate, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentTrip?.point?.count ?? 0
+        return currentPoints?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pointCell") as! PointViewCell
-        let currentPoint = currentTrip?.point?.allObjects as? [Point]
-        cell.cityTF.text = currentPoint![indexPath.row].sity
-        cell.streetTF.text = currentPoint![indexPath.row].street
-        cell.descriptionTF.text = currentPoint![indexPath.row].target_ru
-        cell.numberTF.text = currentPoint![indexPath.row].no
+      // We don`t need some fields if point is "parking". We will fill them in as default
+        if currentPoints![indexPath.row].type == "parking" {
+            cell.targetRuTF.isHidden = true
+            cell.targetDeTF.isHidden = true
+            cell.targetRuHeightConstraint.constant = 0
+            cell.targetDeHeightConstraint.constant = 0
+            cell.gpsButton.isEnabled = false
+        }
         
+    // If point does not have a String, make a placeholder for the UITextView
+        cell.targetDeTF.text = "Цель поездки DE"
+        cell.targetDeTF.textColor = .lightGray
+        cell.targetRuTF.text = "Цель поездки RU"
+        cell.targetRuTF.textColor = .lightGray
+        
+        cell.cityTF.text = currentPoints![indexPath.row].sity
+        cell.streetTF.text = currentPoints![indexPath.row].street
+        cell.numberTF.text = currentPoints![indexPath.row].no
+        
+        if let targetDe = currentPoints![indexPath.row].target_de {
+            cell.targetDeTF.text = targetDe
+            cell.targetDeTF.textColor = .black
+        }
+        if let targetRu = currentPoints![indexPath.row].target_ru {
+            cell.targetRuTF.text = targetRu
+            cell.targetRuTF.textColor = .black
+        }
+           
         cell.cityTF.textColor = .black
         cell.streetTF.textColor = .black
-        cell.descriptionTF.textColor = .black
         cell.numberTF.textColor = .black
         
         return cell
+    }
+
+//MARK: - Override to support rearranging the table view.
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        let elementToMove = currentPoints![fromIndexPath.row]
+        currentPoints!.remove(at: fromIndexPath.row)
+        currentPoints!.insert(elementToMove, at: to.row)
+        updateIndexes()
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {return true}
+    
+//MARK: - Swipe to delete
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {return true}
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            currentPoints?.remove(at: indexPath.row)
+            updateIndexes()
+            tableView.reloadData()
+        }
+    }
+    
+//MARK: - Long hold drag and drop
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+           if session.localDragSession != nil {
+               return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+           }
+
+           return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+       }
+
+       func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+       }
+    
+//MARK: - TextView Delegate
+//This solution solves the problem of displaying placeholder in UITextView
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            if textView.tag == 1 {
+                textView.text = "Цель поездки RU"
+            } else {
+                textView.text = "Цель поездки DE"
+            }
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+  // Dissmiss keyboard on "Done" button prssed
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+
+    
+//MARK: - TextField Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

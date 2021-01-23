@@ -157,7 +157,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.83662498895060411" green="0.95276388680731361" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.88287667057961028" green="0.98709858184909871" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="8io-tR-wlq" kind="relationship" relationship="viewControllers" id="gGg-D6-Hsu"/>
@@ -182,7 +182,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Yt0-uw-oHZ">
-                                    <rect key="frame" x="0.0" y="259" width="375" height="38"/>
+                                    <rect key="frame" x="0.0" y="268" width="375" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJb-0b-Wtc">
@@ -205,11 +205,11 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointCell" rowHeight="203" id="TIQ-NI-v5P" customClass="PointViewCell" customModule="MyFondTransportnie" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="203"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pointCell" rowHeight="212" id="TIQ-NI-v5P" customClass="PointViewCell" customModule="MyFondTransportnie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TIQ-NI-v5P" id="rzz-86-Hc8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="212"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Город" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ld-1u-WXd">
@@ -217,14 +217,20 @@
                                                     <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BDn-Gj-FAV" id="bta-T9-BS6"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Улица" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Teb-3t-VwN">
                                                     <rect key="frame" x="16" y="53" width="252" height="34"/>
                                                     <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BDn-Gj-FAV" id="WhI-S4-4fF"/>
+                                                    </connections>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="№ дома" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMK-wE-hxa">
                                                     <rect key="frame" x="276" y="11" width="83" height="34"/>
@@ -234,17 +240,23 @@
                                                     </constraints>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BDn-Gj-FAV" id="WqV-JO-oN5"/>
+                                                    </connections>
                                                 </textField>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Цель поездки" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TlJ-kn-r1g">
-                                                    <rect key="frame" x="16" y="95" width="343" height="99"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" text="Цель поездки" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TlJ-kn-r1g">
+                                                    <rect key="frame" x="16" y="95" width="343" height="50"/>
                                                     <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="99" id="Ab3-og-N6B"/>
+                                                        <constraint firstAttribute="height" constant="50" id="Ab3-og-N6B"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BDn-Gj-FAV" id="IjR-Oo-xsw"/>
+                                                    </connections>
                                                 </textView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiH-5s-D7F">
                                                     <rect key="frame" x="276" y="53" width="83" height="34"/>
@@ -255,12 +267,27 @@
                                                         <action selector="gpsButtnPressed:" destination="TIQ-NI-v5P" eventType="touchUpInside" id="pmm-Jl-P2A"/>
                                                     </connections>
                                                 </button>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" text="Цель поездки" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DFF-gK-tZ9">
+                                                    <rect key="frame" x="16" y="153" width="343" height="48"/>
+                                                    <color key="backgroundColor" red="0.83662498900000004" green="0.95276388680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="Fia-wd-x6B"/>
+                                                    </constraints>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BDn-Gj-FAV" id="GEo-Nb-JJg"/>
+                                                    </connections>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="vMK-wE-hxa" secondAttribute="trailing" constant="16" id="1r0-qz-q0z"/>
+                                                <constraint firstItem="DFF-gK-tZ9" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="98p-oW-11z"/>
                                                 <constraint firstItem="yiH-5s-D7F" firstAttribute="leading" secondItem="vMK-wE-hxa" secondAttribute="leading" id="9lK-Jm-8zC"/>
                                                 <constraint firstItem="Teb-3t-VwN" firstAttribute="top" secondItem="7ld-1u-WXd" secondAttribute="bottom" constant="8" symbolic="YES" id="Cia-vR-iEw"/>
+                                                <constraint firstItem="DFF-gK-tZ9" firstAttribute="top" secondItem="TlJ-kn-r1g" secondAttribute="bottom" constant="8" symbolic="YES" id="EIU-tJ-iJK"/>
                                                 <constraint firstItem="yiH-5s-D7F" firstAttribute="trailing" secondItem="vMK-wE-hxa" secondAttribute="trailing" id="FeK-j8-zrI"/>
                                                 <constraint firstItem="vMK-wE-hxa" firstAttribute="top" secondItem="rzz-86-Hc8" secondAttribute="top" constant="11" id="Mxs-i6-R3v"/>
                                                 <constraint firstItem="TlJ-kn-r1g" firstAttribute="top" secondItem="Teb-3t-VwN" secondAttribute="bottom" constant="8" symbolic="YES" id="OM2-1a-Ifa"/>
@@ -270,8 +297,9 @@
                                                 <constraint firstItem="TlJ-kn-r1g" firstAttribute="top" secondItem="yiH-5s-D7F" secondAttribute="bottom" constant="8" symbolic="YES" id="Zf4-U7-E1J"/>
                                                 <constraint firstItem="vMK-wE-hxa" firstAttribute="leading" secondItem="7ld-1u-WXd" secondAttribute="trailing" constant="8" symbolic="YES" id="bGM-bg-JOa"/>
                                                 <constraint firstItem="7ld-1u-WXd" firstAttribute="top" secondItem="rzz-86-Hc8" secondAttribute="top" constant="11" id="d8F-ch-FaD"/>
-                                                <constraint firstAttribute="bottom" secondItem="TlJ-kn-r1g" secondAttribute="bottom" constant="9" id="hhT-T9-WVE"/>
+                                                <constraint firstAttribute="bottom" secondItem="DFF-gK-tZ9" secondAttribute="bottom" constant="11" id="ecp-n5-197"/>
                                                 <constraint firstItem="7ld-1u-WXd" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="jUk-bG-Ea2"/>
+                                                <constraint firstAttribute="trailing" secondItem="DFF-gK-tZ9" secondAttribute="trailing" constant="16" id="mj8-cJ-m6m"/>
                                                 <constraint firstItem="Teb-3t-VwN" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="n4H-bg-mld"/>
                                                 <constraint firstItem="TlJ-kn-r1g" firstAttribute="leading" secondItem="rzz-86-Hc8" secondAttribute="leading" constant="16" id="vBE-W2-lQY"/>
                                             </constraints>
@@ -279,10 +307,13 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cityTF" destination="7ld-1u-WXd" id="Kiw-yW-9ls"/>
-                                            <outlet property="descriptionTF" destination="TlJ-kn-r1g" id="3kb-fC-3BM"/>
                                             <outlet property="gpsButton" destination="yiH-5s-D7F" id="qsl-Wm-xOM"/>
                                             <outlet property="numberTF" destination="vMK-wE-hxa" id="P69-zO-2U8"/>
                                             <outlet property="streetTF" destination="Teb-3t-VwN" id="qKN-UF-f1C"/>
+                                            <outlet property="targetDeHeightConstraint" destination="Fia-wd-x6B" id="BCY-wq-4Qn"/>
+                                            <outlet property="targetDeTF" destination="DFF-gK-tZ9" id="SNu-Mf-bUG"/>
+                                            <outlet property="targetRuHeightConstraint" destination="Ab3-og-N6B" id="D1V-Nm-zlU"/>
+                                            <outlet property="targetRuTF" destination="TlJ-kn-r1g" id="3kb-fC-3BM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -485,7 +516,7 @@
         <!--Работнички-->
         <scene sceneID="Pe8-Hz-X4M">
             <objects>
-                <viewController id="8io-tR-wlq" customClass="DescVC" customModule="MyFondTransportnie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8io-tR-wlq" customClass="DescriptionViewController" customModule="MyFondTransportnie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hL3-1a-Qav">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

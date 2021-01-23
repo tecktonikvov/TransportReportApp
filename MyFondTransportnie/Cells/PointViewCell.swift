@@ -11,18 +11,21 @@ class PointViewCell: UITableViewCell {
 
     @IBOutlet weak var cityTF: UITextField!
     
+    @IBOutlet weak var targetRuHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var numberTF: UITextField!
     @IBOutlet weak var streetTF: UITextField!
     @IBOutlet weak var gpsButton: UIButton!
-    @IBOutlet weak var descriptionTF: UITextView!
+    @IBOutlet weak var targetRuTF: UITextView!
+    @IBOutlet weak var targetDeTF: UITextView!
     
+    @IBOutlet weak var targetDeHeightConstraint: NSLayoutConstraint!
     @IBAction func gpsButtnPressed(_ sender: UIButton) {
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         gpsButton.layer.cornerRadius = 6
-        descriptionTF.layer.cornerRadius = 6
+        targetRuTF.layer.cornerRadius = 6
         numberTF.attributedPlaceholder = NSAttributedString(string: "№ Дома",
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         streetTF.attributedPlaceholder = NSAttributedString(string: "Улица",

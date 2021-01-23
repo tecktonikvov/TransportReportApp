@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DescVC: UIViewController {
+class DescriptionViewController: UIViewController {
     
     //var newTrip: TripModel?
     var currentTrip: Trip?
@@ -53,10 +53,7 @@ class DescVC: UIViewController {
         addTables.forEach {$0.backgroundColor = .white}
         
         currentTrip = (self.tabBarController as! TabBarController).currentTrip
-//        
-//        if let points = currentTrip?.point {
-//            print(points)
-//        }
+        
         if currentTrip != nil {
             findPersons()
         }
@@ -146,7 +143,7 @@ class DescVC: UIViewController {
     }
 }
 
-extension DescVC: UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
+extension DescriptionViewController: UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView.tag == 1 {

@@ -2,7 +2,7 @@
 //  Point+CoreDataProperties.swift
 //  
 //
-//  Created by Mac on 19.01.2021.
+//  Created by Mac on 20.01.2021.
 //
 //
 
@@ -16,6 +16,7 @@ extension Point {
         return NSFetchRequest<Point>(entityName: "Point")
     }
 
+    @NSManaged public var sort_number: Int16 // This index need be cos "ordered" option in relationships configurator isn`t working
     @NSManaged public var distance: Double
     @NSManaged public var no: String?
     @NSManaged public var sity: String?

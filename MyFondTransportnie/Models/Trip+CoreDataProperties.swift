@@ -2,7 +2,7 @@
 //  Trip+CoreDataProperties.swift
 //  
 //
-//  Created by Mac on 19.01.2021.
+//  Created by Mac on 20.01.2021.
 //
 //
 
